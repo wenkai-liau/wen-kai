@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid, makeStyles } from '@material-ui/core';
+import HeaderBar from './components/header';
+import React, { useState } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-function App() {
+const useStyles = makeStyles(theme => ({
+  root: {
+    height: '100vh',
+    width: '100vw'
+  },
+  contentContainer: {
+    height: '95%',
+    backgroundColor: 'grey'
+  }
+}));
+
+const App = () =>  {
+  const classes = useStyles();
+  const [tabValue, setTabValue] = useState(0);
+
+  const handleTabChange = (e, newValue) => {
+    setTabValue(newValue);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className={classes.root}>
+        <HeaderBar handleTabChange={handleTabChange} tabValue={tabValue}/>
+
+        <Grid className={classes.contentContainer}>
+          <Routes>
+            <Route exact path={'/about'} element={<div>Tab 1</div>} />
+            <Route exact path={'/cp'} element={<div>Tab 2</div>} />
+            <Route exact path={'/books'} element={<div>Tab 3</div>} />
+            <Route exact path={'/contact'} element={<div>Tab 4</div>} />
+          </Routes>
+        </Grid>
+      </div>
+    </BrowserRouter>
   );
 }
 
