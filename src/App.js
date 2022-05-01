@@ -7,11 +7,12 @@ import {
   Route,
 } from "react-router-dom";
 import About from './components/about';
+import FooterBar from './components/footerBar';
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',
-    width: '100vw'
+    width: '99vw'
   },
   contentContainer: {
     // height: '95%',
@@ -44,6 +45,8 @@ const App = () =>  {
               <Route exact path={'/contact'} element={<div>Tab 4</div>} />
             </Routes>
           </Grid>
+
+          <FooterBar/>
         </ThemeProvider>
       </div>
     </BrowserRouter>
