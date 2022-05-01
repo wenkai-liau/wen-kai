@@ -1,5 +1,5 @@
 import {   Grid, List, ListItem, ListItemIcon, makeStyles, Typography } from '@material-ui/core';
-import { ChromeReaderMode, Computer, LocalCafe, Pool, Timeline } from '@material-ui/icons';
+import { ChromeReaderMode, Computer, Image, LocalCafe, Pool, Timeline } from '@material-ui/icons';
 import React from 'react';
 import BasicTable from './basicTable';
 import { ReactComponent as ReactLogo } from '../svg/react_logo.svg';
@@ -18,6 +18,7 @@ import { ReactComponent as GradleLogo } from '../svg/gradle_logo.svg';
 import { ReactComponent as HtmlLogo } from '../svg/html.svg';
 import { ReactComponent as CssLogo } from '../svg/css.svg';
 import { ReactComponent as MaterialLogo } from '../svg/material.svg';
+import image from '../images/night_panorama.jpg'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -27,7 +28,9 @@ const useStyles = makeStyles(theme => ({
     height: '100%'
   },
   imgContainer: {
-    height: 250,
+    display: 'flex',
+    height: 400,
+    justifyContent: 'center'
   },
   contentContainer: {
     padding: '1% 5%',
@@ -35,10 +38,10 @@ const useStyles = makeStyles(theme => ({
   aboutMeContainer: {
       flexDirection: 'column',
       [theme.breakpoints.down('xs')]: {
-        marginTop: 25
+        marginTop: 15
       },
       [theme.breakpoints.up('sm')]: {
-        marginTop: 50
+        marginTop: 25
       },
   },
   logoStyle: {
@@ -196,6 +199,7 @@ const About = (props) => {
   return (
     <div container className={classes.container}>
         <Grid item className={classes.imgContainer}>
+          <img item src={image} width={1400} height={350} style={{alignSelf: 'center'}}/>
         </Grid>
 
         <Grid item className={classes.contentContainer}>
