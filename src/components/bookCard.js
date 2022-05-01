@@ -1,46 +1,51 @@
-import { Grid,  makeStyles, Typography  } from '@material-ui/core';
+import { Grid,  makeStyles, Tooltip, Typography  } from '@material-ui/core';
 import { Build, History, LibraryBooks, Star, Image } from '@material-ui/icons';
 import React from 'react';
 import _ from 'lodash'
 
 const useStyles = makeStyles(theme => ({
     root: {
+        '&:hover': {
+            backgroundColor: '#D3D3D3',
+          },
         border: '1px solid black',
         borderRadius: 20,
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         [theme.breakpoints.down('xs')]: {
             height: 200,
-            width: '100%',
-            padding: '3%'
+            width: '70%',
+            padding: '3%',
+            margin: '2%'
         },
         [theme.breakpoints.up('sm')]: {
             height: 350,
-            width: '50%',
-            padding: '2%'
+            width: '45%',
+            padding: '2%',
+            margin: '2%'
         },
         alignItems: 'space-between'
   },
   contentContainer: {
     height: '100%',
     width: '60%',
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
     alignItems: 'flex-start'
   },
   imageContainer: {
       width: '40%',
-      backgroundColor: 'blue',
+    //   backgroundColor: 'blue',
       justifyContent: 'center',
       alignItems: 'center',
   },
   titleStyle: {
+      fontWeight: 'bold',
       width: '100%',
       height: '25%',
       overflowX: 'auto',
       display: 'flex',
       justifyContent: 'center',
-      
       [theme.breakpoints.down('xs')]: {
-          fontSize: 20,
+          fontSize: 15,
           marginBottom: 5,
         },
         [theme.breakpoints.up('sm')]: {
@@ -51,9 +56,6 @@ const useStyles = makeStyles(theme => ({
   commentsStyle:{
     width: '100%',
     height: '15%',
-    overflowX: 'auto',
-    display: 'flex',
-    justifyContent: 'center',
     [theme.breakpoints.down('xs')]: {
         fontSize: 15,
         marginBottom: 5
@@ -64,7 +66,7 @@ const useStyles = makeStyles(theme => ({
       },
   },
   authorStyle:{
-      height: '5%',
+      height: '7%',
       [theme.breakpoints.down('xs')]: {
         fontSize: 10
       },
@@ -137,16 +139,18 @@ const BookCard = (props) => {
                 {title}
             </Typography>
 
-            <Typography item  className={classes.commentsStyle} style={{justifyContent: 'flex-start'}}>
-                {comments}
-            </Typography>
+            <Tooltip title={comments}>
+                <Typography item noWrap className={classes.commentsStyle} style={{justifyContent: 'flex-start'}}>
+                    {comments}
+                </Typography>
+            </Tooltip>
 
-            <Typography item  className={classes.authorStyle}>
+            <Typography item noWrap className={classes.authorStyle}>
                 {`Author: ${author}`}
             </Typography>
 
             <Grid item container alignItems='center'> 
-                <Typography item  className={classes.authorStyle}>
+                <Typography item noWrap className={classes.authorStyle}>
                     {`Category: ${category}`}
                 </Typography>
                 {renderCategoryIcon(category)}
