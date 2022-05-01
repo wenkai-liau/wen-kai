@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wenkai-site/static/css/main.e6c13ad2.css",
-    "main.js": "/wenkai-site/static/js/main.3325a79f.js",
+    "main.js": "/wenkai-site/static/js/main.c6b6f231.js",
     "static/js/787.43104ac7.chunk.js": "/wenkai-site/static/js/787.43104ac7.chunk.js",
     "static/media/flask_logo.svg": "/wenkai-site/static/media/flask_logo.b895607b707b858500de2a5db7a25ebd.svg",
     "static/media/perl.svg": "/wenkai-site/static/media/perl.f459faf96fce87de78f26125bf9d3656.svg",
@@ -28,11 +28,11 @@
     "static/media/git_logo.svg": "/wenkai-site/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wenkai-site/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.e6c13ad2.css.map": "/wenkai-site/static/css/main.e6c13ad2.css.map",
-    "main.3325a79f.js.map": "/wenkai-site/static/js/main.3325a79f.js.map",
+    "main.c6b6f231.js.map": "/wenkai-site/static/js/main.c6b6f231.js.map",
     "787.43104ac7.chunk.js.map": "/wenkai-site/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.3325a79f.js"
+    "static/js/main.c6b6f231.js"
   ]
 }
