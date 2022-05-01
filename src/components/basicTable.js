@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
 const BasicTable = (props) => {
   const classes = useStyles();
 
-  const [order, setOrder] = React.useState("asc");
+  const [order, setOrder] = React.useState("desc");
   const [orderBy, setOrderBy] = React.useState("experience");
 
   const handleRequestSort = (event, property) => {

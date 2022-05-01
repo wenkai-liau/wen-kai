@@ -28,15 +28,12 @@ const useStyles = makeStyles(theme => ({
   },
   imgContainer: {
     height: 250,
-    backgroundColor: 'blue',
   },
   contentContainer: {
-    backgroundColor: 'green',
     padding: '1% 5%',
   },
   aboutMeContainer: {
       flexDirection: 'column',
-      backgroundColor: 'yellow',
       [theme.breakpoints.down('xs')]: {
         marginTop: 25
       },
@@ -113,14 +110,14 @@ const About = (props) => {
         </Typography>
         <Grid container style={{flexDirection: 'row'}}>
           
-          <Grid container item style={{backgroundColor: 'red', width: '50%', alignItems: 'center', flexDirection: 'column'}}>
+          <Grid container item style={{ width: '50%', alignItems: 'center', flexDirection: 'column'}}>
             {reactFrameworkRow(<ReactLogo className={classes.logoStyle} style={{margin: 0, width: 70, height: 70}}/>, 'React JS')}
             {reactFrameworkRow(<ReactLogo className={classes.logoStyle} style={{marginBottom: 0, width: 70, height: 70}}/>, 'React TS')}
             {reactFrameworkRow(<SpringLogo className={classes.logoStyle} style={{marginTop: 15}}/>, 'Spring')}
             {reactFrameworkRow(<FlaskLogo className={classes.logoStyle} style={{marginTop: 15, width: 60, height: 60}}/>, '')}
           </Grid>
 
-          <Grid container item style={{backgroundColor: 'blue', width: '50%', alignItems: 'center', flexDirection: 'column'}}>
+          <Grid container item style={{width: '50%', alignItems: 'center', flexDirection: 'column'}}>
             {reactFrameworkRow(<MySqlLogo style={{marginTop: 10}}/>, ' ')}
             {reactFrameworkRow(<Neo4JLogo style={{marginTop: 10}}/>, '')}
             {reactFrameworkRow(<ESLogo style={{height: 50, width: 50, marginTop: 15}} />, 'Elasticsearch')}
@@ -138,7 +135,7 @@ const About = (props) => {
         </Typography>
         <Grid container style={{flexDirection: 'row'}}>
           
-          <Grid container item style={{backgroundColor: 'red', width: '50%', alignItems: 'center', flexDirection: 'column'}}>
+          <Grid container item style={{width: '50%', alignItems: 'center', flexDirection: 'column'}}>
             {reactFrameworkRow(<DockerLogo className={classes.logoStyle} style={{margin: 0, width: 70, height: 70}}/>, 'Docker')}
             {reactFrameworkRow(<GitLogo className={classes.logoStyle} style={{marginBottom: 0, width: 70, height: 70}}/>, 'Git')}
             {reactFrameworkRow(<NifiLogo style={{marginTop: 10}}/>, '')}
@@ -146,7 +143,7 @@ const About = (props) => {
             {reactFrameworkRow(<GradleLogo style={{height: 50, width: 50, marginTop: 15}} />, 'Gradle')}  
           </Grid>
 
-          <Grid container item style={{backgroundColor: 'blue', width: '50%', alignItems: 'center', flexDirection: 'column'}}>
+          <Grid container item style={{width: '50%', alignItems: 'center', flexDirection: 'column'}}>
             {reactFrameworkRow(<CentOSLogo style={{marginTop: 10}}/>, '')}
             {reactFrameworkRow(<FedoraLogo className={classes.logoStyle} style={{marginTop: 15, width: 100, height: 100}}/>, '')}
             {reactFrameworkRow(<HtmlLogo style={{marginTop: 10, width: 60, height: 60}}/>, '')}

@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   },
   contentContainer: {
     // height: '95%',
-    backgroundColor: 'grey'
   }
 }));
 
