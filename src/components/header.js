@@ -6,41 +6,51 @@ const useStyles = makeStyles(theme => ({
   container: {
     height: '5%',
     width: '100%',
-    // backgroundColor: 'red',
     display: 'flex',
   },
   nameContainer: {
     width: '50%', 
     height: '100%', 
-    // backgroundColor: 'blue', 
     fontFamily: '" "Courier New", monospace'
   },
   tabStyles: {
     fontWeight: 30,
-    fontFamily: '" "Courier New", monospace'
-  }
+    fontFamily: '" "Courier New", monospace',
+    '&:hover': {
+        color: '#213ED2',
+        textShadow: '-.25px -.25px 0 black,  .25px .25px black;'
+      }
+  },
+  height: '100%',
+  maxHeight: '100%',
+  minWidth: '25%',
+  maxWidth: '25%',
+  width: '25%'
 }));
 
 const HeaderBar = (props) => {
   const classes = useStyles();
   const {tabValue, handleTabChange} = props
 
-  return (
-    <div container className={classes.container}>
-        <Typography item variant="h3" className={classes.nameContainer}>
-            {/* Wen Kai */}
-        </Typography>
+  const createText = (text) => {
+    return <Typography variant="caption">
+      {text}
+    </Typography>
+  }
 
-        <Grid item container style={{width: '50%', justifyContent: 'center', alignItems: 'center'}}>
-            <Tabs onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
-                <Tab component={Link} to="/about" className={classes.tabStyles} value={0} label="About" />
-                <Tab component={Link} to="/cp" className={classes.tabStyles} value={1} label="CP"/>
-                <Tab component={Link} to="/books" className={classes.tabStyles} value={2} label="Books"/>
-                <Tab component={Link} to="/contact" className={classes.tabStyles} value={3} label="Contact"/>
+  return (
+    <Grid container justify="flex-end" align="center" className={classes.container}>
+
+        <Grid item  >
+            <Tabs variant="fullWidth" onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
+                <Tab component={Link} to="/" className={classes.tabStyles} value={0} label={createText('About')} />
+                <Tab component={Link} to="/cp" className={classes.tabStyles} value={1} label={createText("CP")}/>
+                <Tab component={Link} to="/books" className={classes.tabStyles} value={2} label={createText("Books")}/>
+                <Tab component={Link} to="/contact" className={classes.tabStyles} value={3} label={createText("Contact")}/>
             </Tabs>
         </Grid>
         
-    </div>
+    </Grid>
   );
 }
 

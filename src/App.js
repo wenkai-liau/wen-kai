@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from '@material-ui/core';
+import { createTheme, Grid, makeStyles, ThemeProvider, responsiveFontSizes } from '@material-ui/core';
 import HeaderBar from './components/header';
 import React, { useState } from 'react';
 import {
@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import About from './components/about';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     width: '100vw'
   },
   contentContainer: {
-    height: '95%',
+    // height: '95%',
     backgroundColor: 'grey'
   }
 }));
@@ -26,19 +27,25 @@ const App = () =>  {
     setTabValue(newValue);
   };
 
+  let theme = createTheme();
+  theme = responsiveFontSizes(theme);
+
   return (
     <BrowserRouter>
       <div className={classes.root}>
-        <HeaderBar handleTabChange={handleTabChange} tabValue={tabValue}/>
+        
+        <ThemeProvider theme={theme}>
+          <HeaderBar handleTabChange={handleTabChange} tabValue={tabValue}/>
 
-        <Grid className={classes.contentContainer}>
-          <Routes>
-            <Route exact path={'/about'} element={<div>Tab 1</div>} />
-            <Route exact path={'/cp'} element={<div>Tab 2</div>} />
-            <Route exact path={'/books'} element={<div>Tab 3</div>} />
-            <Route exact path={'/contact'} element={<div>Tab 4</div>} />
-          </Routes>
-        </Grid>
+          <Grid className={classes.contentContainer}>
+            <Routes>
+              <Route exact path={'/'} element={<About/>} />
+              <Route exact path={'/cp'} element={<div>Tab 2</div>} />
+              <Route exact path={'/books'} element={<div>Tab 3</div>} />
+              <Route exact path={'/contact'} element={<div>Tab 4</div>} />
+            </Routes>
+          </Grid>
+        </ThemeProvider>
       </div>
     </BrowserRouter>
   );
