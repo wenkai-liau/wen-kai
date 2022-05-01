@@ -31,7 +31,7 @@ const App = () =>  {
   theme = responsiveFontSizes(theme);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/wenkai-liau">
       <div className={classes.root}>
         
         <ThemeProvider theme={theme}>
@@ -39,7 +39,7 @@ const App = () =>  {
 
           <Grid className={classes.contentContainer}>
             <Routes>
-              <Route exact path={'/about'} element={<About/>} />
+              <Route exact path={''} element={<About/>} />
               <Route exact path={'/cp'} element={<div>Tab 2</div>} />
               <Route exact path={'/books'} element={<div>Tab 3</div>} />
               <Route exact path={'/contact'} element={<div>Tab 4</div>} />
