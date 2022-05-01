@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import About from './components/about';
 import FooterBar from './components/footerBar';
+import Books from './components/books';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +42,7 @@ const App = () =>  {
             <Routes>
               <Route exact path={''} element={<About/>} />
               <Route exact path={'/cp'} element={<div>Tab 2</div>} />
-              <Route exact path={'/books'} element={<div>Tab 3</div>} />
+              <Route exact path={'/books'} element={<Books/>} />
               <Route exact path={'/contact'} element={<div>Tab 4</div>} />
             </Routes>
           </Grid>

@@ -1,0 +1,120 @@
+{
+    "read": [
+        {
+            "title": "A Promised Land",
+            "author": "Barrack Obama",
+            "rating": 5,
+            "difficulty": 0,
+            "comments": "A must read. Gives a brief overview on the power dynamics both in the USA and globally.",
+            "category": "Others"
+        },
+        {
+            "title": "Grokking Algorithms: An illustrated guide for programmers and other curious people",
+            "author": "Aditya Y. Bhargava",
+            "rating": 3,
+            "difficulty": 0,
+            "comments": "Good book for learning basic algorithms",
+            "category": "Technical"
+        },
+        {
+            "title": "Learning React, 2nd Edition",
+            "author": "Eve Porcello",
+            "rating": 4,
+            "difficulty": 2,
+            "comments": "",
+            "category": "Technical"
+        },
+        {
+            "title": "Guide to Competitve Programming",
+            "author": "Antti Laaksonen",
+            "rating": 5,
+            "difficulty": 4,
+            "comments": "The best book on CP read thus far!",
+            "category": "Technical"
+        },
+        {
+            "title": "Dynamic Programming for Coding interviews",
+            "author": "Meenakshi",
+            "rating": 4,
+            "difficulty": 3,
+            "comments": "Practical and example based book",
+            "category": "Technical"
+        },
+        {
+            "title": "Sapiens, A Brief History of Humankind",
+            "author": "Yuval Noah Harai",
+            "rating": 5,
+            "difficulty": 3,
+            "comments": "Top seller for a reason",
+            "category": "History"
+        },
+        {
+            "title": "Algorithms",
+            "author": "Sanjoy Dasgupta",
+            "rating": 3,
+            "difficulty": 5,
+            "comments": "A little bit dry in the middle",
+            "category": "Technical"
+        },
+        {
+            "title": "Six Days of War",
+            "author": "Michael Oren",
+            "rating": 3,
+            "difficulty": 4,
+            "comments": "The detail to key people makes some parts hard to follow",
+            "category": "History"
+        },
+        {
+            "title": "Javascript for kids",
+            "author": "Nick Morgan",
+            "rating": 4,
+            "difficulty": 0,
+            "comments": "A fun book with plently of interesting projects! Highly recommended!",
+            "category": "Technical"
+        },        
+        {
+            "title": "The Road to React",
+            "author": "Robin Wieruch",
+            "rating": 5,
+            "difficulty": 1,
+            "comments": "A good balance between depth and breadth",
+            "category": "Technical"
+        },
+        {
+            "title": "Introduction to Information Retrieval",
+            "author": "Christopher D. Manning",
+            "rating": 4,
+            "difficulty": 4,
+            "comments": "A good introduction to interved indexes and how information is efficiently stored.",
+            "category": "Technical"
+        }
+    ],
+    "reading": [
+        {
+            "title": "Introduction to Algorithms, 2nd Edition",
+            "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein",
+            "rating": 4,
+            "difficulty": 4,
+            "comments": "Highly touted as the 'Bible' of Algorithms",
+            "category": "Technical"
+        },
+        {
+            "title": "Jerusalem",
+            "author": "Simon Sebag Montefiore",
+            "rating": 4,
+            "difficulty": 3,
+            "comments": "",
+            "category": "History"
+        }
+    ],
+    "toRead":[
+        {
+            "title": "The Mythical Man-month",
+            "author": "Brooks, Jr. Frederick P.",
+            "rating": 4,
+            "difficulty": 3,
+            "comments": "",
+            "category": "Others"
+        }
+    ]
+}
