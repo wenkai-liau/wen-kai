@@ -43,7 +43,7 @@ const HeaderBar = (props) => {
 
         <Grid item  >
             <Tabs variant="fullWidth" onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
-                <Tab component={Link} to="/" className={classes.tabStyles} value={0} label={createText('About')} />
+                <Tab component={Link} to="/about" className={classes.tabStyles} value={0} label={createText('About')} />
                 <Tab component={Link} to="/cp" className={classes.tabStyles} value={1} label={createText("CP")}/>
                 <Tab component={Link} to="/books" className={classes.tabStyles} value={2} label={createText("Books")}/>
                 <Tab component={Link} to="/contact" className={classes.tabStyles} value={3} label={createText("Contact")}/>
