@@ -116,6 +116,7 @@ function EnhancedTableHead(props) {
 
 const useStyles = makeStyles((theme) => ({
   paperContainer: {
+    marginTop: 10, 
     [theme.breakpoints.down('xs')]: {
       width: '100%'
     },
@@ -174,7 +175,7 @@ const BasicTable = (props) => {
   }
 
   return (
-    <Grid container style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginTop: 50}}>
+    <Grid container style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginTop: 200}}>
       <Typography item variant="h4">
         Programming Languages
       </Typography>

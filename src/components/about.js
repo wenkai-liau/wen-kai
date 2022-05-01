@@ -36,11 +36,33 @@ const useStyles = makeStyles(theme => ({
   },
   aboutMeContainer: {
       flexDirection: 'column',
-      backgroundColor: 'yellow'
+      backgroundColor: 'yellow',
+      [theme.breakpoints.down('xs')]: {
+        marginTop: 25
+      },
+      [theme.breakpoints.up('sm')]: {
+        marginTop: 50
+      },
   },
   logoStyle: {
     height: 50,
     width: 50
+  },
+  subContentContainer: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: 100
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 250
+    },
+  },
+  othersContainer: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: 50
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 100
+    },
   }
 }));
 
@@ -85,7 +107,7 @@ const About = (props) => {
 
     const renderFrameWorks = () => {
       return (
-        <Grid container justify="center" align="center" style={{marginTop: 50}}>
+        <Grid container justify="center" align="center" className={classes.subContentContainer}>
         <Typography item  variant="h4" justify="center" align="center">
           Frameworks and Databases
         </Typography>
@@ -110,7 +132,7 @@ const About = (props) => {
 
     const renderOthers = () => {
       return (
-        <Grid container justify="center" align="center" style={{marginTop: 50}}>
+        <Grid container justify="center" align="center" className={classes.othersContainer}>
         <Typography item  variant="h4" justify="center" align="center">
           Tools and Others
         </Typography>
@@ -163,8 +185,8 @@ const About = (props) => {
                     </List>
                   </Grid>
 
-                  <Typography item variant="h5" style={{textAlign: 'center'}}>
-                    In this site, I hope to share some resources and information.
+                  <Typography item variant="body1" style={{textAlign: 'center'}}>
+                    On this site, I hope to share resources and information.
                     <br/>
                     I will also be using the site to track my progress and learning journey.
                 </Typography>
