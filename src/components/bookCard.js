@@ -1,10 +1,19 @@
-import { Grid,  makeStyles, Tooltip, Typography  } from '@material-ui/core';
-import { Build, History, LibraryBooks, Star, Image } from '@material-ui/icons';
+import { Grid,  ListItemIcon,  makeStyles, Tooltip, Typography  } from '@material-ui/core';
+import { Build, History, LibraryBooks, Star, Image, Done, Close, MoreHoriz, CheckCircle, Cancel } from '@material-ui/icons';
 import React from 'react';
 import _ from 'lodash'
 
 const useStyles = makeStyles(theme => ({
+    readStatusIcon: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.5em'
+        },
+        [theme.breakpoints.up('sm')]: {
+            fontSize: '3.5em'
+        },
+    },
     root: {
+        position: 'relative',
         '&:hover': {
             backgroundColor: '#D3D3D3',
           },
@@ -100,13 +109,11 @@ const useStyles = makeStyles(theme => ({
     },
     color: '#808080',
   },
-  bottomContainer: {
-
-  }
 }));
 
 const BookCard = (props) => {
   const classes = useStyles();
+  const status = props.status
   const {title, author, rating, difficulty, comments, category} = props.bookData
   
   const renderCategoryIcon = (category) => {
@@ -131,9 +138,30 @@ const BookCard = (props) => {
       )
   }
 
+  const renderStatusIcon = (status) => {
+    switch (status) {
+        case 'read':
+            return <CheckCircle className={classes.readStatusIcon} style={{color: '#32CD32'}}/>
+        case 'reading':
+            return <MoreHoriz className={classes.readStatusIcon} style={{color: '#FFBF00'}}/>
+        case 'toRead':
+            return <Cancel className={classes.readStatusIcon} style={{color: '#ff0000'}}/>
+        default:
+            return <ListItemIcon/>
+    }
+  }
+
+  const renderStatusContainer = (status) => {
+      return (
+        <Grid style={{position: 'absolute', right: '3%', top: '3%'}}>
+            {renderStatusIcon(status)}
+        </Grid>
+      )
+  }
+
   return (
     <Grid container className={classes.root}>
-        
+        {renderStatusContainer(status)}
         <Grid container className={classes.contentContainer}>
             <Typography item  className={classes.titleStyle}>
                 {title}

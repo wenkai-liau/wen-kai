@@ -66,7 +66,9 @@ const Books = (props) => {
         </Grid>
 
         <Grid item container className={classes.contentContainer}>
-            {read.map(book => book !== undefined && <BookCard bookData={book}/>)}
+            {read.map(book => book !== undefined && <BookCard status="read" bookData={book}/>)}
+            {reading.map(book => book !== undefined && <BookCard status="reading" bookData={book}/>)}
+            {toRead.map(book => book !== undefined && <BookCard status="toRead" bookData={book}/>)}
         </Grid>
     </div>
   );
