@@ -178,7 +178,7 @@ const About = (props) => {
                       </ListItem>
                       <ListItem>{createText('Reading', <ChromeReaderMode/>)}</ListItem>
                       <ListItem>{createText('Software Development', <Computer style={{ color: '#C0C0C0'}}/>)}</ListItem>
-                      <ListItem>{createText('Competitve Programming', <Timeline style={{ color: '990F02'}}/>)}</ListItem>
+                      <ListItem>{createText('Competitive Programming', <Timeline style={{ color: '990F02'}}/>)}</ListItem>
                       <ListItem>{createText('Swimming', <Pool style={{ color: 'blue'}}/>)}</ListItem>
                       <ListItem>{createText('Drinking Tea', <LocalCafe style={{ color: '#923c01'}}/>)}</ListItem>
                         
