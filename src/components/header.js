@@ -33,7 +33,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('sm')]: {
       margin: '0% 5%',
-      fontSize: 22
+      fontSize: 22,
+      width: 130
     },
   }
 }));
@@ -42,8 +43,12 @@ const HeaderBar = (props) => {
   const classes = useStyles();
   const {tabValue, handleTabChange} = props
 
+  const allTimezones = moment.tz.names()
+  let someTimezones = ['Africa/Abidjan', 'Europe/Berlin', 'Europe/Zurich', 'Asia/Tel_Aviv', 'Japan', 'America/Vancouver', 'Turkey', 'Europe/Moscow', 'Europe/Paris', 'Asia/Singapore']
+  someTimezones.sort()
+
   const [timezoneOne, setTimezoneOne] = useState(moment.tz.guess());
-  const [timezoneTwo, setTimezoneTwo] = useState(moment.tz.guess());
+  const [timezoneTwo, setTimezoneTwo] = useState('Africa/Abidjan');
 
   const createText = (text) => {
     return <Typography variant="caption">
@@ -51,10 +56,12 @@ const HeaderBar = (props) => {
     </Typography>
   }
 
-  const allTimezones = moment.tz.names()
-
-  const handleChange = (event) => {
+  const handleChangeOne = (event) => {
     setTimezoneOne(event.target.value);
+  };
+
+  const handleChangeTwo = (event) => {
+    setTimezoneTwo(event.target.value);
   };
 
   const {height, width} = useWindowDimensions()
@@ -75,7 +82,7 @@ const HeaderBar = (props) => {
                       id="tz-one"
                       value={timezoneOne}
                       label="TZ"
-                      onChange={handleChange}
+                      onChange={handleChangeOne}
               >
                 {allTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
               </Select>
@@ -97,9 +104,9 @@ const HeaderBar = (props) => {
                         id="tz-two"
                         value={timezoneTwo}
                         label="TZ"
-                        onChange={handleChange}
+                        onChange={handleChangeTwo}
                 >
-                  {allTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
+                  {someTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
                 </Select>
               </FormControl>
             </Grid>
