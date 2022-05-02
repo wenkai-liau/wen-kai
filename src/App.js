@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     width: '99vw'
   },
   contentContainer: {
-    // height: '95%',
+    minHeight: '87%',
   }
 }));
 
@@ -70,7 +70,7 @@ const App = () =>  {
         <ThemeProvider theme={theme}>
           <HeaderBar handleTabChange={handleTabChange} tabValue={tabValue}/>
 
-          <Grid className={classes.contentContainer}>
+          <Grid container className={classes.contentContainer}>
             <Routes>
               <Route exact path={''} element={<About/>} />
               <Route exact path={'/cp'} element={wip()} />
