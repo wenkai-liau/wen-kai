@@ -81,7 +81,7 @@ const FooterBar
       </Grid>
 
       <Typography item className={classes.typographyContainerTwo}>
-        Created By Wen Kai
+        By Wen Kai
       </Typography>
     </Grid>
   );
