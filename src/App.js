@@ -10,6 +10,7 @@ import About from './components/about';
 import FooterBar from './components/footerBar';
 import Books from './components/books';
 import pikachu from './images/pikachu_meme.png';
+import { Helmet } from 'react-helmet';
 
 
 const useStyles = makeStyles(theme => ({
@@ -67,6 +68,11 @@ const App = () =>  {
     <BrowserRouter basename="/wenkai-liau">
       <div className={classes.root}>
         
+        <Helmet>
+          <title>Wen Kai Site</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
+
         <ThemeProvider theme={theme}>
           <HeaderBar handleTabChange={handleTabChange} tabValue={tabValue}/>
 
