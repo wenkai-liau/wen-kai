@@ -77,11 +77,14 @@ const useStyles = makeStyles(theme => ({
 
 const Books = (props) => {
   const classes = useStyles();
-  const [filter, setFilter] = useState({
+
+  const initFilterState = {
     Status: 'All',
     Rating: 'All',
     Category: 'All'
-  });
+  }
+
+  const [filter, setFilter] = useState(initFilterState);
 
   const { height, width } = useWindowDimensions();
 
@@ -158,10 +161,14 @@ const Books = (props) => {
       </FormControl>
 
       <Tooltip title={"Reset"}>
-        <RotateLeft item className={classes.restartFilterStyle}/>
+        <RotateLeft item className={classes.restartFilterStyle} onClick={resetFilter}/>
       </Tooltip>
       </Grid>
     )
+  }
+
+  const resetFilter = (e) => {
+    setFilter(initFilterState)
   }
 
   const filterBooks = () => {
