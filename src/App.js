@@ -11,6 +11,7 @@ import FooterBar from './components/footerBar';
 import Books from './components/books';
 import pikachu from './images/pikachu_meme.png';
 import { Helmet } from 'react-helmet';
+import favicon from './favicon.ico';
 
 
 const useStyles = makeStyles(theme => ({
@@ -71,6 +72,7 @@ const App = () =>  {
         <Helmet>
           <title>Wen Kai Site</title>
           <meta name="description" content="Helmet application" />
+          <link rel="icon" type="image/png" href={favicon} sizes="96x96" />
         </Helmet>
 
         <ThemeProvider theme={theme}>
