@@ -5,6 +5,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 import About from './components/about';
 import FooterBar from './components/footerBar';
@@ -12,6 +13,7 @@ import Books from './components/books';
 import pikachu from './images/pikachu_meme.png';
 import { Helmet } from 'react-helmet';
 import favicon from './favicon.ico';
+import error_page from './images/doge_error.png';
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,6 +23,30 @@ const useStyles = makeStyles(theme => ({
   },
   contentContainer: {
     minHeight: '87%',
+  },
+  errorImageStyle:{
+    alignSelf: 'center',
+    [theme.breakpoints.down('xs')]: {
+      margin: '5%', 
+      height: '100%', 
+      width: '100%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '40%', height: '40%',
+    },
+  },
+  errorPageStyle:{
+    justifyContent: 'center', 
+    [theme.breakpoints.down('xs')]: {
+      margin: '5%', 
+      height: '100%', 
+      width: '100%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      margin: '1%', 
+      height: '100%', 
+      width: '100%',
+    },
   }
 }));
 
@@ -65,6 +91,14 @@ const App = () =>  {
     )
   }
 
+  const errorPage = () => {
+    return (
+      <Grid item container className={classes.errorPageStyle}>
+         <img item src={error_page} className={classes.errorImageStyle}/>
+      </Grid>
+    )
+  }
+
   return (
     <BrowserRouter basename="/wenkai-liau">
       <div className={classes.root}>
@@ -80,10 +114,13 @@ const App = () =>  {
 
           <Grid container className={classes.contentContainer}>
             <Routes>
-              <Route exact path={''} element={<About/>} />
+              <Route exact path={'/'} element={<About/>} />
               <Route exact path={'/cp'} element={wip()} />
               <Route exact path={'/books'} element={<Books/>} />
               <Route exact path={'/contact'} element={wip()} />
+
+              <Route path='/404' element={errorPage()} />
+              <Route path='*' element={<Navigate replace to='/404'/>} />
             </Routes>
           </Grid>
 
