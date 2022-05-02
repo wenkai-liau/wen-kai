@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wenkai-liau/static/css/main.073c9b0a.css",
-    "main.js": "/wenkai-liau/static/js/main.c48c20e7.js",
+    "main.js": "/wenkai-liau/static/js/main.87d7333c.js",
     "static/js/787.43104ac7.chunk.js": "/wenkai-liau/static/js/787.43104ac7.chunk.js",
     "static/media/night_panorama.jpg": "/wenkai-liau/static/media/night_panorama.4cd22419c1481856c662.jpg",
     "static/media/books.jpg": "/wenkai-liau/static/media/books.58e2c280f4345e1dbd8b.jpg",
@@ -11,6 +11,7 @@
     "static/media/java.svg": "/wenkai-liau/static/media/java.e9c7bee6365e79706d14b0779000e395.svg",
     "static/media/mysql_logo.svg": "/wenkai-liau/static/media/mysql_logo.3737d1ef555157e6069bbc4a693b96dc.svg",
     "static/media/selenium_logo.svg": "/wenkai-liau/static/media/selenium_logo.994eeb53fbd0ff7c106f00786c1b8bdb.svg",
+    "static/media/favicon.ico": "/wenkai-liau/static/media/favicon.91dc31c00ea6339abedc.ico",
     "static/media/nifi_logo.svg": "/wenkai-liau/static/media/nifi_logo.7a9bd5ce6357535982ba0bf84063d673.svg",
     "static/media/centos_logo.svg": "/wenkai-liau/static/media/centos_logo.973ad7e4f34fc74f997bc1be84a87d27.svg",
     "static/media/docker_logo.svg": "/wenkai-liau/static/media/docker_logo.5acac4b4a9268616752dd9c3d466a35e.svg",
@@ -31,11 +32,11 @@
     "static/media/git_logo.svg": "/wenkai-liau/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wenkai-liau/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.073c9b0a.css.map": "/wenkai-liau/static/css/main.073c9b0a.css.map",
-    "main.c48c20e7.js.map": "/wenkai-liau/static/js/main.c48c20e7.js.map",
+    "main.87d7333c.js.map": "/wenkai-liau/static/js/main.87d7333c.js.map",
     "787.43104ac7.chunk.js.map": "/wenkai-liau/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.c48c20e7.js"
+    "static/js/main.87d7333c.js"
   ]
 }
