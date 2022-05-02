@@ -1,6 +1,6 @@
 import {   Grid, List, ListItem, ListItemIcon, makeStyles, Typography } from '@material-ui/core';
 import { ChromeReaderMode, Computer, Image, LocalCafe, Pool, Timeline } from '@material-ui/icons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BasicTable from './basicTable';
 import { ReactComponent as ReactLogo } from '../svg/react_logo.svg';
 import { ReactComponent as SpringLogo } from '../svg/spring_logo.svg';
@@ -19,7 +19,11 @@ import { ReactComponent as HtmlLogo } from '../svg/html.svg';
 import { ReactComponent as CssLogo } from '../svg/css.svg';
 import { ReactComponent as MaterialLogo } from '../svg/material.svg';
 import image from '../images/night_panorama.jpg'
-import doge from './doge.png'
+import memeOne from './doge.png'
+import memeTwo from './trollface.png'
+import memeThree from './feelsguy.png'
+import memeFour from './monkas.png'
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -159,6 +163,20 @@ const About = (props) => {
       )
     }
 
+
+    const [memeSel, setMemeSel] = useState(0);
+    const memes = [memeOne, memeTwo, memeThree, memeFour]
+
+    const memeClick = (e) => {
+      setMemeSel(prevState => (prevState + 1)%memes.length)
+    }
+
+    const renderMeme = () => {
+      return (
+        <img onClick={memeClick} item src={memes[memeSel]} width={25} height={25} style={{alignSelf: 'center'}}/>
+      )
+    }
+
     const renderAboutMe = () => {
         return (
             <Grid item className={classes.aboutMeContainer}>
@@ -182,7 +200,7 @@ const About = (props) => {
                       <ListItem>{createText('Competitive Programming', <Timeline style={{ color: '990F02'}}/>)}</ListItem>
                       <ListItem>{createText('Swimming', <Pool style={{ color: 'blue'}}/>)}</ListItem>
                       <ListItem>{createText('Drinking Tea', <LocalCafe style={{ color: '#923c01'}}/>)}</ListItem>
-                      <ListItem>{createText('Memes', <img item src={doge} width={25} height={25} style={{alignSelf: 'center'}}/>)}</ListItem>
+                      <ListItem>{createText('Memes', renderMeme())}</ListItem>
                     </List>
                   </Grid>
 
