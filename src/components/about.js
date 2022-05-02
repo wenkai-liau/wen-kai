@@ -19,6 +19,7 @@ import { ReactComponent as HtmlLogo } from '../svg/html.svg';
 import { ReactComponent as CssLogo } from '../svg/css.svg';
 import { ReactComponent as MaterialLogo } from '../svg/material.svg';
 import image from '../images/night_panorama.jpg'
+import doge from './doge.png'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -181,7 +182,7 @@ const About = (props) => {
                       <ListItem>{createText('Competitive Programming', <Timeline style={{ color: '990F02'}}/>)}</ListItem>
                       <ListItem>{createText('Swimming', <Pool style={{ color: 'blue'}}/>)}</ListItem>
                       <ListItem>{createText('Drinking Tea', <LocalCafe style={{ color: '#923c01'}}/>)}</ListItem>
-                        
+                      <ListItem>{createText('Memes', <img item src={doge} width={25} height={25} style={{alignSelf: 'center'}}/>)}</ListItem>
                     </List>
                   </Grid>
 
