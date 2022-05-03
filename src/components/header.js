@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Select, Tab, Tabs, Typography, MenuItem, FormControl, InputLabel } from '@material-ui/core';
+import { Grid, makeStyles, Select, Tab, Tabs, Typography, MenuItem, FormControl, InputLabel, Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Clock from 'react-live-clock';
@@ -106,12 +106,8 @@ const HeaderBar = (props) => {
   const [timezoneOne, setTimezoneOne] = useState(moment.tz.guess());
   const [timezoneTwo, setTimezoneTwo] = useState('Africa/Abidjan');
 
-  const hamburgerIsopen = useState(false);
-
   const {height, width} = useWindowDimensions()
-
   const phoneScreen = width < 800 ? true : false
-
 
   const handleChangeOne = (event) => {
     setTimezoneOne(event.target.value);
@@ -173,7 +169,7 @@ const HeaderBar = (props) => {
   const renderHamburgerItem = (text, icon, link, tabIndex) => {
     const marginVertical = phoneScreen ? '25% 0%' : '10% 0%'
     return (
-      <Link to={link} style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={(e)=>handleTabChange(e, tabIndex)}>
+      <Link to={link} style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={(e) => { closeMenu(); handleTabChange(e, tabIndex) }}>
         <Grid item container id={text} className={classes.menuItemStyle} style={{alignItems: 'center', display: 'flex', margin: marginVertical, color: tabIndex === tabValue && 'white'}}>
         {icon}
         <Typography item variant="h5" style={{ textAlign: 'left'}}>{text}</Typography>
@@ -182,11 +178,20 @@ const HeaderBar = (props) => {
     )
   }
   
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleStateChange = (state) => {
+    setMenuOpen(menuOpen)
+  }
+  
+  const closeMenu = () => {
+    setMenuOpen(false)
+  }
+
   // https://www.npmjs.com/package/react-burger-menu
   return (
     <Grid container justify="space-between" align="center" className={classes.container}>
-
-      <Menu right styles={styles} isOpen={hamburgerIsopen} width={phoneScreen ? 200 : 300}>
+      <Menu isOpen={menuOpen} onStateChange={() => handleStateChange()} right styles={styles} width={phoneScreen ? 200 : 300}>
         {renderHamburgerItem('About', <Person item style={{fontSize: '2em', marginRight: '5%'}}/>, '/', 0)}
         {renderHamburgerItem('CP', <Timeline item style={{fontSize: '2em', marginRight: '5%'}}/>, '/cp', 1)}
         {renderHamburgerItem('Books', <ChromeReaderMode item style={{fontSize: '2em', marginRight: '5%'}}/>, '/books', 2)}

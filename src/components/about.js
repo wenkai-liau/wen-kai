@@ -23,6 +23,7 @@ import memeOne from './doge.png'
 import memeTwo from './trollface.png'
 import memeThree from './feelsguy.png'
 import memeFour from './monkas.png'
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -214,11 +215,13 @@ const About = (props) => {
         )
     }
     
+    const { height, width } = useWindowDimensions();
+    const smallScreen = width < 720
 
   return (
     <div container className={classes.container}>
         <Grid item className={classes.imgContainer}>
-          <img item src={image} width={1400} height={350} style={{alignSelf: 'center'}}/>
+          <img item src={image} width={smallScreen ? width : 1400} height={smallScreen ? 150 : 350} style={{alignSelf: 'center'}}/>
         </Grid>
 
         <Grid item className={classes.contentContainer}>
