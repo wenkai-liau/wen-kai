@@ -4,6 +4,56 @@ import { Link } from 'react-router-dom';
 import Clock from 'react-live-clock';
 import moment from 'moment';
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import { slide as Menu } from 'react-burger-menu';
+import { ChromeReaderMode, ContactMail, Person, Timeline } from '@material-ui/icons';
+
+
+let styles = {
+  bmBurgerButton: {
+    position: 'fixed',
+    width: '45px',
+    height: '30px',
+    right: '25px',
+    top: '25px'
+  },
+  bmBurgerBars: {
+    background: '#373a47'
+  },
+  bmBurgerBarsHover: {
+    background: '#a90000'
+  },
+  bmCrossButton: {
+    height: '24px',
+    width: '24px'
+  },
+  bmCross: {
+    background: '#bdc3c7'
+  },
+  bmMenuWrap: {
+    position: 'fixed',
+    height: '100%'
+  },
+  bmMenu: {
+    background: '#373a47',
+    padding: '2.5em 1.5em 0',
+    fontSize: '1.15em',
+    overflow: 'hidden'
+  },
+  bmMorphShape: {
+    fill: '#373a47'
+  },
+  bmItemList: {
+    color: '#b8b7ad',
+    padding: '0.8em'
+  },
+  bmItem: {
+    display: 'inline-block',
+    width: '100%'
+  },
+  bmOverlay: {
+    background: 'rgba(0, 0, 0, 0.3)'
+  }
+}
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -36,6 +86,12 @@ const useStyles = makeStyles(theme => ({
       fontSize: 22,
       width: 130
     },
+  },
+  menuItemStyle: {
+    cursor: 'pointer',
+    '&:hover': {
+      color: 'white',
+    },
   }
 }));
 
@@ -50,11 +106,12 @@ const HeaderBar = (props) => {
   const [timezoneOne, setTimezoneOne] = useState(moment.tz.guess());
   const [timezoneTwo, setTimezoneTwo] = useState('Africa/Abidjan');
 
-  const createText = (text) => {
-    return <Typography variant="caption">
-      {text}
-    </Typography>
-  }
+  const hamburgerIsopen = useState(false);
+
+  const {height, width} = useWindowDimensions()
+
+  const phoneScreen = width < 800 ? true : false
+
 
   const handleChangeOne = (event) => {
     setTimezoneOne(event.target.value);
@@ -64,65 +121,79 @@ const HeaderBar = (props) => {
     setTimezoneTwo(event.target.value);
   };
 
-  const {height, width} = useWindowDimensions()
+  const renderClock = () => {
+    return (
+      <Grid item container className={classes.clockContainer}>
+      <Grid item container style={{ alignItems: 'center'}}>
+        <Clock item
+          format={'h:mm:ss A'}
+          ticking={true}
+          timezone={timezoneOne} 
+          className={classes.clockStyle}/>
+        <FormControl>
+          <Select item
+                  labelId="tz-one-label"
+                  id="tz-one"
+                  value={timezoneOne}
+                  label="TZ"
+                  onChange={handleChangeOne}
+          >
+            {allTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
+          </Select>
+        </FormControl>
+      </Grid>
 
+      {
+        width > 1000 &&
+        (
+          <Grid item container style={{ alignItems: 'center'}}>
+          <Clock item
+            format={'h:mm:ss A'}
+            ticking={true}
+            timezone={timezoneTwo} 
+            className={classes.clockStyle}/>
+          <FormControl>
+            <Select item
+                    labelId="tz-two-label"
+                    id="tz-two"
+                    value={timezoneTwo}
+                    label="TZ"
+                    onChange={handleChangeTwo}
+            >
+              {someTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
+            </Select>
+          </FormControl>
+        </Grid>
+        )
+      }
+    </Grid>
+    )
+  }
+
+  const renderHamburgerItem = (text, icon, link, tabIndex) => {
+    const marginVertical = phoneScreen ? '25% 0%' : '10% 0%'
+    return (
+      <Link to={link} style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={(e)=>handleTabChange(e, tabIndex)}>
+        <Grid item container id={text} className={classes.menuItemStyle} style={{alignItems: 'center', display: 'flex', margin: marginVertical, color: tabIndex === tabValue && 'white'}}>
+        {icon}
+        <Typography item variant="h5" style={{ textAlign: 'left'}}>{text}</Typography>
+      </Grid>
+      </Link>
+    )
+  }
+  
+  // https://www.npmjs.com/package/react-burger-menu
   return (
     <Grid container justify="space-between" align="center" className={classes.container}>
 
-        <Grid item container className={classes.clockContainer}>
-          <Grid item container style={{ alignItems: 'center'}}>
-            <Clock item
-              format={'h:mm:ss A'}
-              ticking={true}
-              timezone={timezoneOne} 
-              className={classes.clockStyle}/>
-            <FormControl>
-              <Select item
-                      labelId="tz-one-label"
-                      id="tz-one"
-                      value={timezoneOne}
-                      label="TZ"
-                      onChange={handleChangeOne}
-              >
-                {allTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
-              </Select>
-            </FormControl>
-          </Grid>
+      <Menu right styles={styles} isOpen={hamburgerIsopen} width={phoneScreen ? 200 : 300}>
+        {renderHamburgerItem('About', <Person item style={{fontSize: '2em', marginRight: '5%'}}/>, '/', 0)}
+        {renderHamburgerItem('CP', <Timeline item style={{fontSize: '2em', marginRight: '5%'}}/>, '/cp', 1)}
+        {renderHamburgerItem('Books', <ChromeReaderMode item style={{fontSize: '2em', marginRight: '5%'}}/>, '/books', 2)}
+        {renderHamburgerItem('Contact', <ContactMail item style={{fontSize: '2em', marginRight: '5%'}}/>, 'contact', 3)}
+      </Menu>
 
-          {
-            width > 1000 &&
-            (
-              <Grid item container style={{ alignItems: 'center'}}>
-              <Clock item
-                format={'h:mm:ss A'}
-                ticking={true}
-                timezone={timezoneTwo} 
-                className={classes.clockStyle}/>
-              <FormControl>
-                <Select item
-                        labelId="tz-two-label"
-                        id="tz-two"
-                        value={timezoneTwo}
-                        label="TZ"
-                        onChange={handleChangeTwo}
-                >
-                  {someTimezones.map(tz => <MenuItem value={tz}>{tz}</MenuItem>)}
-                </Select>
-              </FormControl>
-            </Grid>
-            )
-          }
-        </Grid>
-
-        <Grid item container style={{justifyContent: 'flex-end', width: '70%'}}>
-            <Tabs item onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
-                <Tab component={Link} to="/" className={classes.tabStyles} value={0} label={createText('About')} />
-                <Tab component={Link} to="/cp" className={classes.tabStyles} value={1} label={createText("CP")}/>
-                <Tab component={Link} to="/books" className={classes.tabStyles} value={2} label={createText("Books")}/>
-                <Tab component={Link} to="/contact" className={classes.tabStyles} value={3} label={createText("Contact")}/>
-            </Tabs>
-        </Grid>
-        
+        {/* {renderTabs()} */}
     </Grid>
   );
 }
