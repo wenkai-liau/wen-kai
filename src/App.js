@@ -14,6 +14,7 @@ import pikachu from './images/pikachu_meme.png';
 import { Helmet } from 'react-helmet';
 import favicon from './favicon.ico';
 import error_page from './images/doge_error.png';
+import CompetitivePage from './components/competitivePage';
 
 
 const useStyles = makeStyles(theme => ({
@@ -115,7 +116,7 @@ const App = () =>  {
           <Grid container className={classes.contentContainer}>
             <Routes>
               <Route exact path={'/'} element={<About/>} />
-              <Route exact path={'/cp'} element={wip()} />
+              <Route exact path={'/cp'} element={<CompetitivePage/>} />
               <Route exact path={'/books'} element={<Books/>} />
               <Route exact path={'/contact'} element={wip()} />
 
