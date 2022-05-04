@@ -1,35 +1,195 @@
-import { Grid, makeStyles, Tab, Tabs, Tooltip, Typography, } from '@material-ui/core';
-import useCodeforces from '../../hooks/useCodeforces';
-import CodeforcesRankTable from './codeforcesRankTable';
-import _ from 'lodash'
+import { Grid, makeStyles, Typography } from "@material-ui/core";
+import useCodeforces from "../../hooks/useCodeforces";
+import CodeforcesRankTable from "./codeforcesRankTable";
+import _ from "lodash";
+import React from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from "chart.js";
+import { Doughnut, Bar } from "react-chartjs-2";
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-// top left: submission status
-// top right: contest getContestDistribution
-// bot: categories
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
+
+const submissionStatusColors = {
+  WRONG_ANSWER: "#d62d20",
+  OK: "#008744",
+  TIME_LIMIT_EXCEEDED: "#0057e7",
+  RUNTIME_ERROR: "#d11141",
+  SKIPPED: "#5e5656",
+  COMPILATION_ERROR: "#afafaf",
+  MEMORY_LIMIT_EXCEEDED: "#ffa700",
+};
+
+const divisionColors = {
+  2: "#cc2a36",
+  3: "#eb6841",
+  4: "#edc951",
+};
+
+const barChartColors = ['#a8e6cf', '#dcedc1', '#ffd3b6', '#ffaaa5', '#ff8b94']
+
+const useStyles = makeStyles((theme) => ({
+  doughtnutsContainer: {
+    alignItems: 'center',
+    padding: 5,
+    width: "100%",
+    [theme.breakpoints.down("xs")]: {
+      height: 250,
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: 300,
+    },
+  },
+  doughtnutContainer:{
+    height: '100%', 
+    border: '1px solid black',
+    borderRadius: 15, 
+    justifyContent: 'center', 
+    padding: 5, 
+    margin: '1% 2%',
+    [theme.breakpoints.down('xs')]: {
+        width: '90%', 
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: '45%', 
+      },
+  }
+}));
+
 const CodeforcesPage = (props) => {
-    const {ratingData, submissionsData, idSolved, categories, submissionStatus} = useCodeforces()
+  const classes = useStyles();
+  const {
+    ratingData,
+    submissionsData,
+    idSolved,
+    categories,
+    submissionStatus,
+  } = useCodeforces();
 
-    const getContestDistribution = () => {
-        const divLevels = {2: 0, 3:0, 4:0}
-        _.forEach(ratingData, item => {
-            const contestName = item.contestName;
-            if (contestName.includes('Div. 2')) {
-                divLevels[2] += 1;
-            } else if (contestName.includes('Div. 3')) {
-                divLevels[3] += 1;
-            } else {
-                divLevels[4] += 1;
+  const getContestDistribution = () => {
+    const divLevels = { 2: 0, 3: 0, 4: 0 };
+    _.forEach(ratingData, (item) => {
+      const contestName = item.contestName;
+      if (contestName.includes("Div. 2")) {
+        divLevels[2] += 1;
+      } else if (contestName.includes("Div. 3")) {
+        divLevels[3] += 1;
+      } else {
+        divLevels[4] += 1;
+      }
+    });
+    return divLevels;
+  };
+
+  const renderDoughnut = (title, labels, values, colors, disableLegend = true) => {
+    const datasets = [
+      {
+        label: title,
+        data: values,
+        backgroundColor: colors,
+        borderWidth: 1,
+      },
+    ];
+
+    const data = {
+      labels,
+      datasets,
+    };
+
+    const options = {
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+            display: true,
+            text: title,
+            font: {
+                size: 16
             }
-        })
-        return divLevels
-    }
+          },
+        legend: {
+          display: !disableLegend,
+          position: 'right'
+        },
+      },
+    };
 
     return (
-        <Grid container item>
-            <CodeforcesRankTable ratingData={ratingData} idSolved={idSolved}/>
-        </Grid>
+            <Doughnut data={data} options={options} height={100} responsive/>
     );
+  };
+
+  const renderBarChart = (labels, values, backgroundColor) => {
+    const options = {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            font: {
+                size: 16
+            },
+            display: true,
+            text: 'Problem Categories',
+          },
+        },
+      };
+
+      const barData = {
+          labels,
+          datasets : [{
+              data: values,
+              backgroundColor
+          }]
+      }
+
+      return (
+        <Bar options={options} data={barData} />
+      )
   }
 
+  const {height, width} = useWindowDimensions()
+  const isPhoneScreen = width < 700
+
+  const divisionBreakdown = getContestDistribution();
+  let sortedCategories = _.map(Object.entries(categories), (item) => {return {name: item[0], val: item[1]}})
+  sortedCategories = _.orderBy(sortedCategories, ['val'], ['desc'])
+  const maxVal = _.max(sortedCategories.map(item => item.val))
+  const scaleRatio = maxVal / (barChartColors.length - 1)
+
+  const getBarColor = (val) => {
+      return barChartColors[Math.round(val / scaleRatio)]
+  }
+
+  return (
+    <Grid container item style={{display:'flex', height: '100%', flexDirection: 'column'}}>
+
+      <Grid container item className={classes.doughtnutsContainer}>
+        <Grid item container  className={classes.doughtnutContainer}>
+            {renderDoughnut(
+                `Submit Status (${_.sum(_.values(submissionStatus))})`,
+                _.keys(submissionStatus),
+                _.values(submissionStatus),
+                _.keys(submissionStatus).map((key) => submissionStatusColors[key]),  false
+            )}
+        </Grid>
+        <Grid item container  className={classes.doughtnutContainer}>
+            {renderDoughnut(
+                `Contest Division (${_.sum(_.values(divisionBreakdown))})`,
+                _.keys(divisionBreakdown).map(item => `Div ${item}`),
+                _.values(divisionBreakdown),
+                _.keys(divisionBreakdown).map((key) => divisionColors[key]),
+                false
+            )}
+        </Grid>
+      </Grid>
+    
+    <Grid item container style={{marginTop: isPhoneScreen ? 300 : 150, marginBottom: isPhoneScreen ? 50: 100 }}>
+        {renderBarChart(sortedCategories.map(item => item.name), sortedCategories.map(item => item.val), sortedCategories.map(item => getBarColor(item.val)))}
+    </Grid>
+
+    <CodeforcesRankTable item ratingData={ratingData} idSolved={idSolved} />
+    </Grid>
+  );
+};
 
 export default CodeforcesPage;

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import codeforces from "../../images/codeforces.png"
 import leetcode from "../../images/leetcode.png"
 import TabPanel from '../../common/tabPanel';
-import useCodeforces from '../../hooks/useCodeforces';
 import CodeforcesPage from './codeforcesPage';
 
 const useStyles = makeStyles(theme => ({
@@ -14,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     height: '100%',
     margin: '2% 1%',
-    backgroundColor: 'grey'
+    // backgroundColor: 'grey'
   },
   imgContainer: {
     display: 'flex',
@@ -45,7 +44,7 @@ const CP = (props) => {
     return (
         <Grid item container className={classes.container}>
 
-        <Tabs variant="fullWidth" onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
+        <Tabs onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
             <Tab className={classes.tabStyles} value={0} label={createText("Leetcode", <img item src={leetcode} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
             <Tab className={classes.tabStyles} value={1} label={createText("Atcoder", <Code/>)}/>
             <Tab className={classes.tabStyles} value={2} label={createText("Codeforces", <img item src={codeforces} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
