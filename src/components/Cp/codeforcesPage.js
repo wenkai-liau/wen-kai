@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Typography } from "@material-ui/core";
+import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import useCodeforces from "../../hooks/useCodeforces";
 import CodeforcesRankTable from "./codeforcesRankTable";
 import _ from "lodash";
@@ -6,6 +6,8 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { SendOutlined } from "@material-ui/icons";
+import { openInNewTab } from "../../common/common";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
 
@@ -28,6 +30,18 @@ const divisionColors = {
 const barChartColors = ['#a8e6cf', '#dcedc1', '#ffd3b6', '#ffaaa5', '#ff8b94']
 
 const useStyles = makeStyles((theme) => ({
+  navButtonStyle:{
+    justifyContent: 'flex-end',
+    [theme.breakpoints.down("xs")]: {
+        padding: '0% 10%',
+        margin: '10px 0%'
+        // height: 250,
+      },
+      [theme.breakpoints.up("sm")]: {
+          padding: '0% 5%'
+        // height: 300,
+      },
+  },
   doughtnutsContainer: {
     alignItems: 'center',
     padding: 5,
@@ -160,8 +174,18 @@ const CodeforcesPage = (props) => {
       return barChartColors[Math.round(val / scaleRatio)]
   }
 
+  const onClickURL = (url) => {
+    return () => openInNewTab(url)
+  }
+
   return (
     <Grid container item style={{display:'flex', height: '100%', flexDirection: 'column'}}>
+    
+    <Grid item container className={classes.navButtonStyle}>
+        <Button color="primary" variant="contained" endIcon={<SendOutlined />} onClick={onClickURL('https://codeforces.com/profile/wKai000')}>
+            Codeforces
+        </Button>
+    </Grid>
 
       <Grid container item className={classes.doughtnutsContainer}>
         <Grid item container  className={classes.doughtnutContainer}>
