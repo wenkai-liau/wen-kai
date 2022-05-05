@@ -91,6 +91,8 @@ const UpcomingEventPage = (props) => {
         }
       }
 
+      console.log(formatData[0])
+
     return (
         <Grid item container className={classes.container}>
 
@@ -115,7 +117,7 @@ const UpcomingEventPage = (props) => {
                           {`Next Event:`}
                       </Typography>
                       <Typography item variant="h6" style={{width: '70%', color: getPlatformColor(formatData[0] && formatData[0].type)}}>
-                          {`${_.isUndefined(formatData[0]) ? '' : formatData[0].type}`}
+                          {`${_.isUndefined(formatData[0]) ? '' : formatData[0].name}`}
                       </Typography>
                     </Grid>
 
@@ -130,7 +132,7 @@ const UpcomingEventPage = (props) => {
                   </Grid>
 
                   <Grid container item style={{marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
-                    <Clocks startDate={new Date()} endDate={firstEvent}/>
+                    { !_.isUndefined(firstEvent) && <Clocks startDate={currentTime.toDate()} endDate={firstEvent}/> }
                   </Grid>
 
                 </Grid>
