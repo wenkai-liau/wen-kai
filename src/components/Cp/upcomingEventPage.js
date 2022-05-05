@@ -160,11 +160,11 @@ const UpcomingEventPage = (props) => {
                   </Typography>
                 </Grid>
 
-                <Grid item container alignItems='center'>
+                <Grid item container alignItems='center' justifyContent="center" style={{marginTop: 20}}>
                   <Typography item variant="h5" style={{width: '30%'}}>
                       {`Events:`}
                   </Typography>
-                  <Grid item variant="h6" style={{width: '70%', paddingTop: '5%'}}>
+                  <Grid item variant="h6" style={{width: '70%'}}>
                     {
                       getSelectedDateEvents().events.map((event,idx) => {
                         return (

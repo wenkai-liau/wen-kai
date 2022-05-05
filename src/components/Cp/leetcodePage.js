@@ -121,7 +121,7 @@ const LeetcodePage = (props) => {
                     {renderStats('Handle: ', 'Lwenkai', '#494848')}
                     {renderStats('Ranking: ', _.defaultTo(data.ranking, 0), '#494848')}
                     {renderStats('Contribution: ', _.defaultTo(data.contributionPoints, 0), '#494848')}
-                    {renderStats('Acceptance: ', _.defaultTo(`${data.acceptanceRate} %`, 0), '#494848')}
+                    {renderStats('Acceptance: ', `${_.defaultTo(data.acceptanceRate, 0)} %`, '#494848')}
                 </CardContent>
             </Card>
             
