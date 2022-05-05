@@ -5,8 +5,7 @@ import moment from 'moment';
 import Calendar from 'react-calendar';
 import './Calendar.css';
 import _ from 'lodash';
-import Countdown from 'react-countdown';
-import cf from "../../images/codeforces.png"
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -36,16 +35,7 @@ const UpcomingEventPage = (props) => {
   const [selDate, setSelDate] = useState(new Date())
   const currentTime = moment.tz(new Date(), currentTimezone);
 
-  const allData = useUpcomingEvents()
-  const formatData = _.map(allData, data => {
-    return {
-      ...data,
-      dateObj: new Date(data.start_time),
-      type: data.url.includes('leetcode') ? 'LEETCODE' : (data.url.includes('atcoder') ? "ATCODER" : 'CODEFORCES')
-    }
-  })
-  const sortedData = formatData.sort((a, b) => a.dateObj - b.dateObj).filter(data => data.dateObj > new Date())
-
+  const {formatData, firstEvent} = useUpcomingEvents()
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       for (let i=0; i<formatData.length; i++) {
@@ -68,7 +58,7 @@ const UpcomingEventPage = (props) => {
         }
       }
       if (count > 1){
-        return <Grid style={{position: 'absolute', top: 2, right:3}} >{count}</Grid>
+        return <Grid style={{position: 'absolute', top: 2, right:3, fontStyle: 'italic', fontSize: 12}} >{count}</Grid>
       }
       }
 
@@ -89,6 +79,20 @@ const UpcomingEventPage = (props) => {
         return {count, events: Array.from(events)}
       }
 
+      const children = ({ remainingTime }) => {
+        const hours = Math.floor(remainingTime / 3600)
+        const minutes = Math.floor((remainingTime % 3600) / 60)
+        const seconds = remainingTime % 60
+      
+        return `${hours}:${minutes}:${seconds}`
+      }
+
+      const getDuration = () => {
+        if (!_.isUndefined(firstEvent)) {
+        return (firstEvent.getTime() - new Date())/1000
+      }
+      }
+
     return (
         <Grid item container className={classes.container}>
 
@@ -105,33 +109,47 @@ const UpcomingEventPage = (props) => {
               <Card className={classes.cardContainer}>
                 <CardContent>
 
-                  <Grid item container alignItems='center'>
-                    <Typography item variant="h6" style={{width: '30%'}}>
-                        {`Next Event:`}
-                    </Typography>
-                    <Typography item variant="h6" style={{width: '70%'}}>
-                        {`${_.isUndefined(sortedData[0]) ? '' : sortedData[0].type}`}
-                    </Typography>
-                  </Grid>
+                <Grid container item>
 
-                  <Grid item container alignItems='center'>
-                    <Typography item variant="h6" style={{width: '30%'}}>
-                        {`Start Time:`}
-                    </Typography>
-                    <Typography item variant="h6" style={{width: '70%'}}>
-                        {`${_.isUndefined(sortedData[0]) ? '' : sortedData[0].dateObj.toDateString()}`}
-                    </Typography>
-                  </Grid>
+                  <Grid container item style={{width: '60%'}}>
+                    <Grid item container alignItems='center'>
+                      <Typography item variant="h6" style={{width: '30%'}}>
+                          {`Next Event:`}
+                      </Typography>
+                      <Typography item variant="h6" style={{width: '70%'}}>
+                          {`${_.isUndefined(formatData[0]) ? '' : formatData[0].type}`}
+                      </Typography>
+                    </Grid>
 
-                  <Grid item container alignItems='center'>
-                    <Typography item variant="h6" style={{width: '30%'}}>
-                        {`Time Left:`}
-                    </Typography>
-                    <Grid item style={{width: '70%'}}>
-                      <Countdown date={_.isUndefined(sortedData[0]) ? '' : sortedData[0].dateObj}/>
-                      {/* <Countdown date={Date.now() + 10000}/> */}
+                    <Grid item container alignItems='center'>
+                      <Typography item variant="h6" style={{width: '30%'}}>
+                          {`Start Time:`}
+                      </Typography>
+                      <Typography item variant="h6" style={{width: '70%'}}>
+                          {`${_.isUndefined(formatData[0]) ? '' : formatData[0].dateObj.toDateString()}`}
+                      </Typography>
                     </Grid>
                   </Grid>
+
+                  <Grid container item style={{width: '40%', alignItems: 'center', justifyContent: 'center'}}>
+                    <CountdownCircleTimer
+                      size={100}
+                      isPlaying
+                      duration={getDuration()}
+                      colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                      colorsTime={[7, 5, 2, 0]}
+                    >
+                      {({ remainingTime }) => {
+                        const hours = Math.floor(remainingTime / 3600)
+                        const minutes = Math.floor((remainingTime % 3600) / 60)
+                        const seconds = remainingTime % 60
+
+                        return `${hours}:${minutes}:${seconds}`
+                      }}
+                    </CountdownCircleTimer>
+                  </Grid>
+
+                </Grid>
 
                 </CardContent>
               </Card>

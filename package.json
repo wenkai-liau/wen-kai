@@ -18,7 +18,7 @@
     "react-burger-menu": "^3.0.6",
     "react-calendar": "^3.7.0",
     "react-chartjs-2": "^4.1.0",
-    "react-countdown": "^2.3.2",
+    "react-countdown-circle-timer": "^3.0.9",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
     "react-live-clock": "^5.8.2",
