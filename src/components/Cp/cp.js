@@ -6,6 +6,7 @@ import leetcode from "../../images/leetcode.png"
 import TabPanel from '../../common/tabPanel';
 import CodeforcesPage from './codeforcesPage';
 import UpcomingEventPage from './upcomingEventPage';
+import LeetcodePage from './leetcodePage';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 const CP = (props) => {
   const classes = useStyles();
-  const [tabValue, setTabValue] = useState(0);
+  const [tabValue, setTabValue] = useState(1);
 
   const handleTabChange = (e, newValue) => {
     setTabValue(newValue);
@@ -56,7 +57,7 @@ const CP = (props) => {
           <UpcomingEventPage/>
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-            Item One
+            <LeetcodePage/>
         </TabPanel>
         <TabPanel value={tabValue} index={2}>
             Item Two

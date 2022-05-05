@@ -35,6 +35,11 @@ useEffect(() => {
     
     const categories = {}
     const submissionStatus = {}
+
+    if (_.isUndefined(submissionsData) || _.isEmpty(submissionsData)){
+      return {idSolved, categories, submissionStatus} 
+    }
+    
     _.forEach(submissionsData, data => {
         const passed = data.verdict === 'OK'
         submissionStatus[data.verdict] = _.defaultTo(submissionStatus[data.verdict], 0) + 1
