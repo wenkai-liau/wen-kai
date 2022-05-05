@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     height: '100%',
     margin: '2% 1%',
+    justifyContent: 'space-around'
   },
   itemContainer: {
     padding: 10,
@@ -21,11 +22,17 @@ const useStyles = makeStyles(theme => ({
       width: '100%'
     },
     [theme.breakpoints.up("sm")]: {
-      width: '50%'
+      width: '100%'
     },
   },
   cardContainer: {
-    margin: '10px 0px'
+    margin: '30px 0px',
+    [theme.breakpoints.down("xs")]: {
+      width: '100%'
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: '45%'
+    },
   }
 }));
 
@@ -68,15 +75,15 @@ const UpcomingEventPage = (props) => {
  
       const getSelectedDateEvents = () => {
         let count = 0
-        let events = new Set()
+        let events = []
         for (let i=0; i<formatData.length; i++) {
           const data = formatData[i]
           if (selDate.getMonth() === data.dateObj.getMonth() && selDate.getDate() === data.dateObj.getDate()) {
             count += 1
-            events.add(data.type)
+            events.push({"name": data.name, "type": data.type})
           }
         }
-        return {count, events: Array.from(events)}
+        return {count, events}
       }
 
       const getPlatformColor = (type) => {
@@ -91,87 +98,89 @@ const UpcomingEventPage = (props) => {
         }
       }
 
+    const renderCalendarContainer = () => {
+      return (
+        <Grid item className={classes.itemContainer} style={{paddingTop: 20}}>
+        <Calendar
+          onChange={onChange}
+          value={currentTime.toDate()}
+          tileClassName={tileClassName}
+          tileContent={tileContent}
+        />
+      </Grid>
+      )
+    }
+
     return (
         <Grid item container className={classes.container}>
 
-          <Grid item className={classes.itemContainer} style={{paddingTop: 20}}>
-              <Calendar
-                onChange={onChange}
-                value={currentTime.toDate()}
-                tileClassName={tileClassName}
-                tileContent={tileContent}
-              />
-            </Grid>
+          <Card className={classes.cardContainer}>
+            <CardContent>
 
-            <Grid item className={classes.itemContainer}>
-              <Card className={classes.cardContainer}>
-                <CardContent>
+            <Grid container item>
 
-                <Grid container item>
-
-                  <Grid container item >
-                    <Grid item container alignItems='center'>
-                      <Typography item variant="h6" style={{width: '30%'}}>
-                          {`Next Event:`}
-                      </Typography>
-                      <Typography item variant="h6" style={{width: '70%', color: getPlatformColor(formatData[0] && formatData[0].type)}}>
-                          {`${_.isUndefined(formatData[0]) ? '' : formatData[0].name}`}
-                      </Typography>
-                    </Grid>
-
-                    <Grid item container alignItems='center'>
-                      <Typography item variant="h6" style={{width: '30%'}}>
-                          {`Start Time:`}
-                      </Typography>
-                      <Typography item variant="h6" style={{width: '70%'}}>
-                          {`${_.isUndefined(formatData[0]) ? '' : formatData[0].dateObj.toDateString()}`}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-
-                  <Grid container item style={{marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
-                    { !_.isUndefined(firstEvent) && <Clocks startDate={currentTime.toDate()} endDate={firstEvent}/> }
-                  </Grid>
-
+              <Grid container item >
+                <Grid item container alignItems='center'>
+                  <Typography item variant="h6" style={{width: '30%'}}>
+                      {`Next Event:`}
+                  </Typography>
+                  <Typography item variant="h6" style={{width: '70%', color: getPlatformColor(formatData[0] && formatData[0].type)}}>
+                      {`${_.isUndefined(formatData[0]) ? '' : formatData[0].name}`}
+                  </Typography>
                 </Grid>
 
-                </CardContent>
-              </Card>
+                <Grid item container alignItems='center'>
+                  <Typography item variant="h6" style={{width: '30%'}}>
+                      {`Start Time:`}
+                  </Typography>
+                  <Typography item variant="h6" style={{width: '70%'}}>
+                      {`${_.isUndefined(formatData[0]) ? '' : formatData[0].dateObj.toDateString()}`}
+                  </Typography>
+                </Grid>
+              </Grid>
 
-              <Card className={classes.cardContainer}>
-                <CardContent>
+              <Grid container item style={{marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
+                { !_.isUndefined(firstEvent) && <Clocks startDate={currentTime.toDate()} endDate={firstEvent}/> }
+              </Grid>
 
-                  <Grid item container alignItems='center'>
-                    <Typography item variant="h6" style={{width: '30%'}}>
-                        {`Selected Date:`}
-                    </Typography>
-                    <Typography item variant="h6" style={{width: '70%'}}>
-                        {`${_.isUndefined(selDate) ? '' : selDate.toDateString()}`}
-                    </Typography>
-                  </Grid>
-
-                  <Grid item container alignItems='center'>
-                    <Typography item variant="h6" style={{width: '30%'}}>
-                        {`Events:`}
-                    </Typography>
-                    <Grid item variant="h6" style={{width: '70%'}}>
-                      {
-                        getSelectedDateEvents().events.map(event => {
-                          return (
-                            <Typography item variant="h6" style={{color: getPlatformColor(event)}}>
-                              {event}
-                            </Typography>
-                          )
-                        })
-                      }
-                    </Grid>
-                  </Grid>
-
-                </CardContent>
-              </Card>             
             </Grid>
 
+            </CardContent>
+          </Card>
 
+          <Card className={classes.cardContainer}>
+              <CardContent>
+
+                <Grid item container alignItems='center'>
+                  <Typography item variant="h6" style={{width: '30%'}}>
+                      {`Selected Date:`}
+                  </Typography>
+                  <Typography item variant="h6" style={{width: '70%'}}>
+                      {`${_.isUndefined(selDate) ? '' : selDate.toDateString()}`}
+                  </Typography>
+                </Grid>
+
+                <Grid item container alignItems='center'>
+                  <Typography item variant="h5" style={{width: '30%'}}>
+                      {`Events:`}
+                  </Typography>
+                  <Grid item variant="h6" style={{width: '70%', paddingTop: '5%'}}>
+                    {
+                      getSelectedDateEvents().events.map((event,idx) => {
+                        return (
+                          <Typography item variant="h5" style={{color: getPlatformColor(event.type)}}>
+                            {`${event.name}`}
+                          </Typography>
+                        )
+                      })
+                    }
+                  </Grid>
+                </Grid>
+
+              </CardContent>
+            </Card>             
+
+          {renderCalendarContainer()}
         </Grid>
     )
 }
