@@ -5,7 +5,7 @@ import moment from 'moment';
 import Calendar from 'react-calendar';
 import './Calendar.css';
 import _ from 'lodash';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import Clocks from '../../common/clocks';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -79,24 +79,22 @@ const UpcomingEventPage = (props) => {
         return {count, events: Array.from(events)}
       }
 
-      const children = ({ remainingTime }) => {
-        const hours = Math.floor(remainingTime / 3600)
-        const minutes = Math.floor((remainingTime % 3600) / 60)
-        const seconds = remainingTime % 60
-      
-        return `${hours}:${minutes}:${seconds}`
-      }
-
-      const getDuration = () => {
-        if (!_.isUndefined(firstEvent)) {
-        return (firstEvent.getTime() - new Date())/1000
-      }
+      const getPlatformColor = (type) => {
+        if (type === 'LEETCODE') {
+          return '#fcba03'
+        } else if (type === 'CODEFORCES') {
+          return '#B22222'
+        } else if ('ATCODER') {
+          return '#008080'
+        } else {
+          return 'white'
+        }
       }
 
     return (
         <Grid item container className={classes.container}>
 
-          <Grid item className={classes.itemContainer}>
+          <Grid item className={classes.itemContainer} style={{paddingTop: 20}}>
               <Calendar
                 onChange={onChange}
                 value={currentTime.toDate()}
@@ -111,12 +109,12 @@ const UpcomingEventPage = (props) => {
 
                 <Grid container item>
 
-                  <Grid container item style={{width: '60%'}}>
+                  <Grid container item >
                     <Grid item container alignItems='center'>
                       <Typography item variant="h6" style={{width: '30%'}}>
                           {`Next Event:`}
                       </Typography>
-                      <Typography item variant="h6" style={{width: '70%'}}>
+                      <Typography item variant="h6" style={{width: '70%', color: getPlatformColor(formatData[0] && formatData[0].type)}}>
                           {`${_.isUndefined(formatData[0]) ? '' : formatData[0].type}`}
                       </Typography>
                     </Grid>
@@ -131,22 +129,8 @@ const UpcomingEventPage = (props) => {
                     </Grid>
                   </Grid>
 
-                  <Grid container item style={{width: '40%', alignItems: 'center', justifyContent: 'center'}}>
-                    <CountdownCircleTimer
-                      size={100}
-                      isPlaying
-                      duration={getDuration()}
-                      colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-                      colorsTime={[7, 5, 2, 0]}
-                    >
-                      {({ remainingTime }) => {
-                        const hours = Math.floor(remainingTime / 3600)
-                        const minutes = Math.floor((remainingTime % 3600) / 60)
-                        const seconds = remainingTime % 60
-
-                        return `${hours}:${minutes}:${seconds}`
-                      }}
-                    </CountdownCircleTimer>
+                  <Grid container item style={{marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
+                    <Clocks startDate={new Date()} endDate={firstEvent}/>
                   </Grid>
 
                 </Grid>
@@ -170,9 +154,17 @@ const UpcomingEventPage = (props) => {
                     <Typography item variant="h6" style={{width: '30%'}}>
                         {`Events:`}
                     </Typography>
-                    <Typography item variant="h6" style={{width: '70%'}}>
-                        {getSelectedDateEvents().events.join(', ')}
-                    </Typography>
+                    <Grid item variant="h6" style={{width: '70%'}}>
+                      {
+                        getSelectedDateEvents().events.map(event => {
+                          return (
+                            <Typography item variant="h6" style={{color: getPlatformColor(event)}}>
+                              {event}
+                            </Typography>
+                          )
+                        })
+                      }
+                    </Grid>
                   </Grid>
 
                 </CardContent>
