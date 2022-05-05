@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 const CP = (props) => {
   const classes = useStyles();
-  const [tabValue, setTabValue] = useState(3);
+  const [tabValue, setTabValue] = useState(0);
 
   const handleTabChange = (e, newValue) => {
     setTabValue(newValue);
@@ -46,23 +46,23 @@ const CP = (props) => {
         <Grid item container className={classes.container}>
 
         <Tabs onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
-            <Tab className={classes.tabStyles} value={0} label={createText("Leetcode", <img item src={leetcode} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
-            <Tab className={classes.tabStyles} value={1} label={createText("Atcoder", <Code/>)}/>
-            <Tab className={classes.tabStyles} value={2} label={createText("Codeforces", <img item src={codeforces} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
-            <Tab className={classes.tabStyles} value={3} label={createText("Upcoming", <AccessTime/>)}/>
+            <Tab className={classes.tabStyles} value={0} label={createText("Upcoming", <AccessTime/>)}/>
+            <Tab className={classes.tabStyles} value={1} label={createText("Leetcode", <img item src={leetcode} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
+            <Tab className={classes.tabStyles} value={2} label={createText("Atcoder", <Code/>)}/>
+            <Tab className={classes.tabStyles} value={3} label={createText("Codeforces", <img item src={codeforces} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
         </Tabs>
 
         <TabPanel value={tabValue} index={0}>
-            Item One
+          <UpcomingEventPage/>
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-            Item Two
+            Item One
         </TabPanel>
         <TabPanel value={tabValue} index={2}>
-            <CodeforcesPage/>
+            Item Two
         </TabPanel>
         <TabPanel value={tabValue} index={3}>
-          <UpcomingEventPage/>
+            <CodeforcesPage/>
         </TabPanel>
 
         </Grid>

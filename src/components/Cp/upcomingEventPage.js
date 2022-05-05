@@ -91,8 +91,6 @@ const UpcomingEventPage = (props) => {
         }
       }
 
-      console.log(formatData[0])
-
     return (
         <Grid item container className={classes.container}>
 
