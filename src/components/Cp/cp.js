@@ -50,7 +50,7 @@ const CP = (props) => {
         <Tabs onChange={handleTabChange} value={tabValue} textColor="primary" indicatorColor="primary">
             <Tab className={classes.tabStyles} value={0} label={createText("Upcoming", <AccessTime/>)}/>
             <Tab className={classes.tabStyles} value={1} label={createText("Leetcode", <img item src={leetcode} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
-            <Tab className={classes.tabStyles} value={2} label={createText("Atcoder", <Code/>)}/>
+            {/* <Tab className={classes.tabStyles} value={2} label={createText("Atcoder", <Code/>)}/> */}
             <Tab className={classes.tabStyles} value={3} label={createText("Codeforces", <img item src={codeforces} width={24} height={24} style={{alignSelf: 'center'}}/>)}/>
         </Tabs>
 
@@ -60,9 +60,9 @@ const CP = (props) => {
         <TabPanel value={tabValue} index={1}>
             <LeetcodePage/>
         </TabPanel>
-        <TabPanel value={tabValue} index={2}>
+        {/* <TabPanel value={tabValue} index={2}>
             <AtcoderPage/>
-        </TabPanel>
+        </TabPanel> */}
         <TabPanel value={tabValue} index={3}>
             <CodeforcesPage/>
         </TabPanel>
