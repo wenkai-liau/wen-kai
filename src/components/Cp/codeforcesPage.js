@@ -3,13 +3,30 @@ import useCodeforces from "../../hooks/useCodeforces";
 import CodeforcesRankTable from "./codeforcesRankTable";
 import _ from "lodash";
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from "chart.js";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+} from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { SendOutlined } from "@material-ui/icons";
 import { openInNewTab } from "../../common/common";
 
-ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title
+);
 
 const submissionStatusColors = {
   WRONG_ANSWER: "#d62d20",
@@ -27,23 +44,23 @@ const divisionColors = {
   4: "#edc951",
 };
 
-const barChartColors = ['#a8e6cf', '#dcedc1', '#ffd3b6', '#ffaaa5', '#ff8b94']
+const barChartColors = ["#a8e6cf", "#dcedc1", "#ffd3b6", "#ffaaa5", "#ff8b94"];
 
 const useStyles = makeStyles((theme) => ({
-  navButtonStyle:{
-    justifyContent: 'flex-end',
+  navButtonStyle: {
+    justifyContent: "flex-end",
     [theme.breakpoints.down("xs")]: {
-        padding: '0% 10%',
-        margin: '10px 0%'
-        // height: 250,
-      },
-      [theme.breakpoints.up("sm")]: {
-          padding: '0% 5%'
-        // height: 300,
-      },
+      padding: "0% 10%",
+      margin: "10px 0%",
+      // height: 250,
+    },
+    [theme.breakpoints.up("sm")]: {
+      padding: "0% 5%",
+      // height: 300,
+    },
   },
   doughtnutsContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 5,
     width: "100%",
     [theme.breakpoints.down("xs")]: {
@@ -53,20 +70,20 @@ const useStyles = makeStyles((theme) => ({
       height: 300,
     },
   },
-  doughtnutContainer:{
-    height: '100%', 
-    border: '1px solid black',
-    borderRadius: 15, 
-    justifyContent: 'center', 
-    padding: 5, 
-    margin: '1% 2%',
-    [theme.breakpoints.down('xs')]: {
-        width: '90%', 
-      },
-      [theme.breakpoints.up('sm')]: {
-        width: '45%', 
-      },
-  }
+  doughtnutContainer: {
+    height: "100%",
+    border: "1px solid black",
+    borderRadius: 15,
+    justifyContent: "center",
+    padding: 5,
+    margin: "1% 2%",
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: "45%",
+    },
+  },
 }));
 
 const CodeforcesPage = (props) => {
@@ -94,7 +111,13 @@ const CodeforcesPage = (props) => {
     return divLevels;
   };
 
-  const renderDoughnut = (title, labels, values, colors, disableLegend = true) => {
+  const renderDoughnut = (
+    title,
+    labels,
+    values,
+    colors,
+    disableLegend = true
+  ) => {
     const datasets = [
       {
         label: title,
@@ -113,105 +136,125 @@ const CodeforcesPage = (props) => {
       maintainAspectRatio: false,
       plugins: {
         title: {
-            display: true,
-            text: title,
-            font: {
-                size: 16
-            }
+          display: true,
+          text: title,
+          font: {
+            size: 16,
           },
+        },
         legend: {
           display: !disableLegend,
-          position: 'right'
+          position: "right",
         },
       },
     };
 
-    return (
-            <Doughnut data={data} options={options} height={100} responsive/>
-    );
+    return <Doughnut data={data} options={options} height={100} responsive />;
   };
 
   const renderBarChart = (labels, values, backgroundColor) => {
     const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false
-          },
-          title: {
-            font: {
-                size: 16
-            },
-            display: true,
-            text: 'Problem Categories',
-          },
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
         },
-      };
+        title: {
+          font: {
+            size: 16,
+          },
+          display: true,
+          text: "Problem Categories",
+        },
+      },
+    };
 
-      const barData = {
-          labels,
-          datasets : [{
-              data: values,
-              backgroundColor
-          }]
-      }
+    const barData = {
+      labels,
+      datasets: [
+        {
+          data: values,
+          backgroundColor,
+        },
+      ],
+    };
 
-      return (
-        <Bar options={options} data={barData} />
-      )
-  }
+    return <Bar options={options} data={barData} />;
+  };
 
-  const {height, width} = useWindowDimensions()
-  const isPhoneScreen = width < 700
+  const { height, width } = useWindowDimensions();
+  const isPhoneScreen = width < 700;
 
   const divisionBreakdown = getContestDistribution();
-  let sortedCategories = _.map(Object.entries(categories), (item) => {return {name: item[0], val: item[1]}})
-  sortedCategories = _.orderBy(sortedCategories, ['val'], ['desc'])
-  const maxVal = _.max(sortedCategories.map(item => item.val))
-  const scaleRatio = maxVal / (barChartColors.length - 1)
+  let sortedCategories = _.map(Object.entries(categories), (item) => {
+    return { name: item[0], val: item[1] };
+  });
+  sortedCategories = _.orderBy(sortedCategories, ["val"], ["desc"]);
+  const maxVal = _.max(sortedCategories.map((item) => item.val));
+  const scaleRatio = maxVal / (barChartColors.length - 1);
 
   const getBarColor = (val) => {
-      return barChartColors[Math.round(val / scaleRatio)]
-  }
+    return barChartColors[Math.round(val / scaleRatio)];
+  };
 
   const onClickURL = (url) => {
-    return () => openInNewTab(url)
-  }
+    return () => openInNewTab(url);
+  };
 
   return (
-    <Grid container item style={{display:'flex', height: '100%', flexDirection: 'column'}}>
-    
-    <Grid item container className={classes.navButtonStyle}>
-        <Button color="primary" variant="contained" endIcon={<SendOutlined />} onClick={onClickURL('https://codeforces.com/profile/wKai000')}>
-            Codeforces
+    <Grid
+      container
+      item
+      style={{ display: "flex", height: "100%", flexDirection: "column" }}
+    >
+      <Grid item container className={classes.navButtonStyle}>
+        <Button
+          color="primary"
+          variant="contained"
+          endIcon={<SendOutlined />}
+          onClick={onClickURL("https://codeforces.com/profile/wKai000")}
+        >
+          Codeforces
         </Button>
-    </Grid>
+      </Grid>
 
       <Grid container item className={classes.doughtnutsContainer}>
-        <Grid item container  className={classes.doughtnutContainer}>
-            {renderDoughnut(
-                `Submit Status (${_.sum(_.values(submissionStatus))})`,
-                _.keys(submissionStatus),
-                _.values(submissionStatus),
-                _.keys(submissionStatus).map((key) => submissionStatusColors[key]),  false
-            )}
+        <Grid item container className={classes.doughtnutContainer}>
+          {renderDoughnut(
+            `Submit Status (${_.sum(_.values(submissionStatus))})`,
+            _.keys(submissionStatus),
+            _.values(submissionStatus),
+            _.keys(submissionStatus).map((key) => submissionStatusColors[key]),
+            false
+          )}
         </Grid>
-        <Grid item container  className={classes.doughtnutContainer}>
-            {renderDoughnut(
-                `Contest Division (${_.sum(_.values(divisionBreakdown))})`,
-                _.keys(divisionBreakdown).map(item => `Div ${item}`),
-                _.values(divisionBreakdown),
-                _.keys(divisionBreakdown).map((key) => divisionColors[key]),
-                false
-            )}
+        <Grid item container className={classes.doughtnutContainer}>
+          {renderDoughnut(
+            `Contest Division (${_.sum(_.values(divisionBreakdown))})`,
+            _.keys(divisionBreakdown).map((item) => `Div ${item}`),
+            _.values(divisionBreakdown),
+            _.keys(divisionBreakdown).map((key) => divisionColors[key]),
+            false
+          )}
         </Grid>
       </Grid>
-    
-    <Grid item container style={{marginTop: isPhoneScreen ? 300 : 150, marginBottom: isPhoneScreen ? 50: 100 }}>
-        {renderBarChart(sortedCategories.map(item => item.name), sortedCategories.map(item => item.val), sortedCategories.map(item => getBarColor(item.val)))}
-    </Grid>
 
-    <CodeforcesRankTable item ratingData={ratingData} idSolved={idSolved} />
+      <Grid
+        item
+        container
+        style={{
+          marginTop: isPhoneScreen ? 300 : 150,
+          marginBottom: isPhoneScreen ? 50 : 100,
+        }}
+      >
+        {renderBarChart(
+          sortedCategories.map((item) => item.name),
+          sortedCategories.map((item) => item.val),
+          sortedCategories.map((item) => getBarColor(item.val))
+        )}
+      </Grid>
+
+      <CodeforcesRankTable item ratingData={ratingData} idSolved={idSolved} />
     </Grid>
   );
 };
