@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.css": "/wenkai-liau/static/css/main.28b6b973.css",
-    "main.js": "/wenkai-liau/static/js/main.00e2caf9.js",
+    "main.css": "/wenkai-liau/static/css/main.d9277287.css",
+    "main.js": "/wenkai-liau/static/js/main.dd4aad25.js",
     "static/js/787.43104ac7.chunk.js": "/wenkai-liau/static/js/787.43104ac7.chunk.js",
+    "static/media/craterLake.jpg": "/wenkai-liau/static/media/craterLake.cc445d358d9288c3cad3.jpg",
+    "static/media/marina.jpg": "/wenkai-liau/static/media/marina.bd21550a25a63776dcb6.jpg",
+    "static/media/moraineLake.jpg": "/wenkai-liau/static/media/moraineLake.931b86d0a89f9f7d567a.jpg",
+    "static/media/banff.jpg": "/wenkai-liau/static/media/banff.1d4c4329a4a841b43d65.jpg",
     "static/media/night_panorama.jpg": "/wenkai-liau/static/media/night_panorama.4cd22419c1481856c662.jpg",
-    "static/media/books.jpg": "/wenkai-liau/static/media/books.58e2c280f4345e1dbd8b.jpg",
     "static/media/doge_error.png": "/wenkai-liau/static/media/doge_error.ff1bea58f0d0957cb31c.png",
     "static/media/pikachu_meme.png": "/wenkai-liau/static/media/pikachu_meme.1957dbaf9809dad51d6a.png",
     "static/media/flask_logo.svg": "/wenkai-liau/static/media/flask_logo.b895607b707b858500de2a5db7a25ebd.svg",
@@ -32,12 +35,12 @@
     "static/media/c.svg": "/wenkai-liau/static/media/c.f645a5e133a8bbfbbbc53ae8fc512974.svg",
     "static/media/git_logo.svg": "/wenkai-liau/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wenkai-liau/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
-    "main.28b6b973.css.map": "/wenkai-liau/static/css/main.28b6b973.css.map",
-    "main.00e2caf9.js.map": "/wenkai-liau/static/js/main.00e2caf9.js.map",
+    "main.d9277287.css.map": "/wenkai-liau/static/css/main.d9277287.css.map",
+    "main.dd4aad25.js.map": "/wenkai-liau/static/js/main.dd4aad25.js.map",
     "787.43104ac7.chunk.js.map": "/wenkai-liau/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28b6b973.css",
-    "static/js/main.00e2caf9.js"
+    "static/css/main.d9277287.css",
+    "static/js/main.dd4aad25.js"
   ]
 }
