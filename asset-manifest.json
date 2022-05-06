@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.d9277287.css",
-    "main.js": "/static/js/main.dbf705fe.js",
+    "main.js": "/static/js/main.22e4c7da.js",
     "static/js/787.43104ac7.chunk.js": "/static/js/787.43104ac7.chunk.js",
     "static/media/craterLake.jpg": "/static/media/craterLake.cc445d358d9288c3cad3.jpg",
     "static/media/marina.jpg": "/static/media/marina.bd21550a25a63776dcb6.jpg",
@@ -36,11 +36,11 @@
     "static/media/git_logo.svg": "/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.d9277287.css.map": "/static/css/main.d9277287.css.map",
-    "main.dbf705fe.js.map": "/static/js/main.dbf705fe.js.map",
+    "main.22e4c7da.js.map": "/static/js/main.22e4c7da.js.map",
     "787.43104ac7.chunk.js.map": "/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d9277287.css",
-    "static/js/main.dbf705fe.js"
+    "static/js/main.22e4c7da.js"
   ]
 }
