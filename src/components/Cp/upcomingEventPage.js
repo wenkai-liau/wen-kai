@@ -42,7 +42,7 @@ const UpcomingEventPage = (props) => {
   const [selDate, setSelDate] = useState(new Date())
   const currentTime = moment.tz(new Date(), currentTimezone);
 
-  const {formatData, firstEvent} = useUpcomingEvents()
+  const {formatData} = useUpcomingEvents()
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       for (let i=0; i<formatData.length; i++) {
@@ -140,7 +140,7 @@ const UpcomingEventPage = (props) => {
               </Grid>
 
               <Grid container item style={{marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
-                { !_.isUndefined(firstEvent) && <Clocks startDate={currentTime.toDate()} endDate={firstEvent}/> }
+                { !_.isEmpty(formatData) && !_.isUndefined(formatData[0]) && <Clocks startDate={currentTime.toDate()} endDate={formatData[0].dateObj}/> }
               </Grid>
 
             </Grid>

@@ -30,7 +30,7 @@ const Clocks = (props) => {
   const classes = useStyles();
 
   const { startDate, endDate } = props;
-
+// console.log('endDate', endDate)
   const {height, width} = useWindowDimensions()
   const isPhoneScreen = width < 700
   const timerProps = {

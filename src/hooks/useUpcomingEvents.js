@@ -1,50 +1,46 @@
-import axios from 'axios';
-import _ from 'lodash';
-import { useState, useEffect } from 'react';
+import axios from "axios";
+import _ from "lodash";
+import { useState, useEffect } from "react";
 
 const useUpcomingEvents = () => {
+  const [data, setData] = useState([]);
 
-const [lc, setLc] = useState([])
-const [ac, setAc] = useState([])
-const [cf, setCF] = useState([])
+  const one = `https://kontests.net/api/v1/codeforces`;
+  const two = `https://kontests.net/api/v1/at_coder`;
+  const three = `https://kontests.net/api/v1/leet_code`;
 
-useEffect(() => {
-    axios.get(`https://kontests.net/api/v1/codeforces`)
-      .then(res => {
-        setCF(res.data)
-      })
-      axios.get(`https://kontests.net/api/v1/at_coder`)
-      .then(res => {
-        setAc(res.data)
-      })
-      axios.get(`https://kontests.net/api/v1/leet_code`)
-      .then(res => {
-        setLc(res.data)
-      })
-  }, []);
+  useEffect(() => {
+    const requestOne = axios.get(one);
+    const requestTwo = axios.get(two);
+    const requestThree = axios.get(three);
 
-  const getAllFormatData = () => {
-    const allData = [...lc, ...ac, ...cf]
-    const formatData = _.map(allData, data => {
-      return {
-        ...data,
-        dateObj: new Date(data.start_time),
-        type: data.url.includes('leetcode') ? 'LEETCODE' : (data.url.includes('atcoder') ? "ATCODER" : 'CODEFORCES')
-      }
+    axios.all([requestOne, requestTwo, requestThree]).then(axios.spread((...responses) => {
+      const responseOne = responses[0].data
+      const responseTwo = responses[1].data
+      const responseThree = responses[2].data
+
+      const allData = [...responseOne, ...responseTwo, ...responseThree]
+      const formatData = _.map(allData, (data) => {
+        return {
+          ...data,
+          dateObj: new Date(data.start_time),
+          type: data.url.includes("leetcode")
+            ? "LEETCODE"
+            : data.url.includes("atcoder")
+            ? "ATCODER"
+            : "CODEFORCES",
+        };
+      });
+      const sortedData = formatData
+      .sort((a, b) => a.dateObj - b.dateObj)
+      .filter((data) => data.dateObj > new Date());
+      setData(sortedData);
+
+    })).catch(errors => {
+      // react on errors.
     })
-    const sortedData = formatData.sort((a, b) => a.dateObj - b.dateObj).filter(data => data.dateObj > new Date())
-    return sortedData
-  }
+  }, []);
+  return { formatData: data };
+};
 
-  const getFirstEvent = () => {
-    const formatData = getAllFormatData()
-    if (!_.isUndefined(formatData) && !_.isEmpty(formatData)) {
-      return formatData[0].dateObj
-    }
-  }
-
-
-  return {formatData: getAllFormatData(), firstEvent: getFirstEvent()}
-}
-
-export default useUpcomingEvents
+export default useUpcomingEvents;
