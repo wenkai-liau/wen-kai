@@ -12,13 +12,13 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { ReactComponent as PythonLogo } from '../svg/python.svg';
-import { ReactComponent as JavaLogo } from '../svg/java.svg';
-import { ReactComponent as JSLogo } from '../svg/javascript.svg';
-import { ReactComponent as TSLogo } from '../svg/typescript.svg';
-import { ReactComponent as CLogo } from '../svg/c.svg';
-import { ReactComponent as MatlabLogo } from '../svg/matlab.svg';
-import { ReactComponent as PerlLogo } from '../svg/perl.svg';
+import { ReactComponent as PythonLogo } from "../svg/python.svg";
+import { ReactComponent as JavaLogo } from "../svg/java.svg";
+import { ReactComponent as JSLogo } from "../svg/javascript.svg";
+import { ReactComponent as TSLogo } from "../svg/typescript.svg";
+import { ReactComponent as CLogo } from "../svg/c.svg";
+import { ReactComponent as MatlabLogo } from "../svg/matlab.svg";
+import { ReactComponent as PerlLogo } from "../svg/perl.svg";
 import * as React from "react";
 
 function createData(language, experience, preference) {
@@ -26,14 +26,65 @@ function createData(language, experience, preference) {
 }
 
 const rows = [
-  createData(<Grid container alignItems="center"><PythonLogo style={{marginRight:2, height:30,width:30}}></PythonLogo>Python</Grid>, 2, 3),
-  createData(<Grid container alignItems="center"><JavaLogo style={{marginRight:2, height:30,width:30}}></JavaLogo>Java</Grid>, 2, 3),
-  createData(<Grid container alignItems="center"><JSLogo style={{marginRight:2, height:30,width:30}}></JSLogo>Javascript</Grid>, 2, 2),
-  createData(<Grid container alignItems="center"><MatlabLogo style={{marginRight:2, height:30,width:30}}></MatlabLogo>Matlab</Grid>,2, 1),
-  createData(<Grid container alignItems="center"><TSLogo style={{marginRight:2, height:30,width:30}}></TSLogo>Typescript</Grid>, 1, 3),
-  createData(<Grid container alignItems="center"><CLogo style={{marginRight:2, height:30,width:30}}></CLogo>C</Grid>, 0, 0),
-  createData(<Grid container alignItems="center"><PerlLogo style={{marginRight:2, height:30,width:30}}></PerlLogo>Perl</Grid>, 0, 0),
-
+  createData(
+    <Grid container alignItems="center">
+      <PythonLogo
+        style={{ marginRight: 2, height: 30, width: 30 }}
+      ></PythonLogo>
+      Python
+    </Grid>,
+    2,
+    3
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <JavaLogo style={{ marginRight: 2, height: 30, width: 30 }}></JavaLogo>
+      Java
+    </Grid>,
+    2,
+    3
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <JSLogo style={{ marginRight: 2, height: 30, width: 30 }}></JSLogo>
+      Javascript
+    </Grid>,
+    2,
+    2
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <MatlabLogo
+        style={{ marginRight: 2, height: 30, width: 30 }}
+      ></MatlabLogo>
+      Matlab
+    </Grid>,
+    2,
+    1
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <TSLogo style={{ marginRight: 2, height: 30, width: 30 }}></TSLogo>
+      Typescript
+    </Grid>,
+    1,
+    3
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <CLogo style={{ marginRight: 2, height: 30, width: 30 }}></CLogo>C
+    </Grid>,
+    0,
+    0
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <PerlLogo style={{ marginRight: 2, height: 30, width: 30 }}></PerlLogo>
+      Perl
+    </Grid>,
+    0,
+    0
+  ),
 ];
 
 const headCells = [
@@ -116,12 +167,12 @@ function EnhancedTableHead(props) {
 
 const useStyles = makeStyles((theme) => ({
   paperContainer: {
-    marginTop: 10, 
-    [theme.breakpoints.down('xs')]: {
-      width: '100%'
+    marginTop: 10,
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
     },
-    [theme.breakpoints.up('sm')]: {
-      width: '75%'
+    [theme.breakpoints.up("sm")]: {
+      width: "75%",
     },
   },
 }));
@@ -140,46 +191,38 @@ const BasicTable = (props) => {
 
   const mapExperience = (num) => {
     if (num === 0) {
-      return <Grid style={{color: '#228B22'}}>
-        Comfortable
-      </Grid>
+      return <Grid style={{ color: "#228B22" }}>Comfortable</Grid>;
     } else if (num === 1) {
-      return <Grid style={{color: '	#ff8503'}}>
-      Very Comfortable
-    </Grid>
+      return <Grid style={{ color: "	#ff8503" }}>Very Comfortable</Grid>;
     } else {
-      return <Grid style={{color: 'red'}}>
-        Experienced
-      </Grid>
+      return <Grid style={{ color: "red" }}>Experienced</Grid>;
     }
-  }
+  };
 
   const mapPreferences = (num) => {
     if (num === 0) {
-      return <Grid style={{color: '#ffbaba'}}>
-        Low
-      </Grid>
+      return <Grid style={{ color: "#ffbaba" }}>Low</Grid>;
     } else if (num === 1) {
-      return <Grid style={{color: '#ff5252'}}>
-      Medium
-    </Grid>
+      return <Grid style={{ color: "#ff5252" }}>Medium</Grid>;
     } else if (num === 2) {
-      return <Grid style={{color: '#ff0000'}}>
-      High
-    </Grid>
-    }else {
-      return <Grid style={{color: '#a70000'}}>
-        Very  High
-      </Grid>
+      return <Grid style={{ color: "#ff0000" }}>High</Grid>;
+    } else {
+      return <Grid style={{ color: "#a70000" }}>Very High</Grid>;
     }
-  }
+  };
 
   return (
-    <Grid container style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginTop: 200}}>
-      <Typography item variant="h4">
-        Programming Languages
-      </Typography>
-      <Paper item className={classes.paperContainer}>
+    <Grid
+      container
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: 200,
+      }}
+    >
+      <Typography variant="h4">Programming Languages</Typography>
+      <Paper className={classes.paperContainer}>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <EnhancedTableHead
@@ -197,8 +240,12 @@ const BasicTable = (props) => {
                   <TableCell component="th" scope="row">
                     {row.language}
                   </TableCell>
-                  <TableCell align="right">{mapExperience(row.experience)}</TableCell>
-                  <TableCell align="right">{mapPreferences(row.preference)}</TableCell>
+                  <TableCell align="right">
+                    {mapExperience(row.experience)}
+                  </TableCell>
+                  <TableCell align="right">
+                    {mapPreferences(row.preference)}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

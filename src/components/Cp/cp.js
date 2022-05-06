@@ -63,7 +63,6 @@ const CP = (props) => {
           label={createText(
             "Leetcode",
             <img
-              item
               src={leetcode}
               width={24}
               height={24}
@@ -77,7 +76,6 @@ const CP = (props) => {
           label={createText(
             "Codeforces",
             <img
-              item
               src={codeforces}
               width={24}
               height={24}

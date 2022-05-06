@@ -96,7 +96,7 @@ const LeetcodePage = (props) => {
         },
       },
     };
-    return <Doughnut data={data} options={options} height={250} responsive />;
+    return <Doughnut data={data} options={options} height={250} />;
   };
 
   const solvedCount = [
@@ -137,7 +137,6 @@ const LeetcodePage = (props) => {
       <Grid container justifyContent="space-between">
         <Grid item>{text}</Grid>
         <img
-          item
           src={leetcode}
           width={24}
           height={24}

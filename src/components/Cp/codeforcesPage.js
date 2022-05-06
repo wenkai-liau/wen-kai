@@ -154,7 +154,7 @@ const CodeforcesPage = (props) => {
       },
     };
 
-    return <Doughnut data={data} options={options} height={100} responsive />;
+    return <Doughnut data={data} options={options} height={100} />;
   };
 
   const renderBarChart = (labels, values, backgroundColor) => {
@@ -211,7 +211,6 @@ const CodeforcesPage = (props) => {
       <Grid container justifyContent="space-between">
         <Grid item>{text}</Grid>
         <img
-          item
           src={codeforces}
           width={24}
           height={24}
@@ -281,7 +280,7 @@ const CodeforcesPage = (props) => {
         )}
       </Grid>
 
-      <CodeforcesRankTable item ratingData={ratingData} idSolved={idSolved} />
+      <CodeforcesRankTable ratingData={ratingData} idSolved={idSolved} />
     </Grid>
   );
 };
