@@ -45,6 +45,7 @@ const divisionColors = {
   2: "#cc2a36",
   3: "#eb6841",
   4: "#edc951",
+  Global: "#8B0000",
 };
 
 const barChartColors = ["#a8e6cf", "#dcedc1", "#ffd3b6", "#ffaaa5", "#ff8b94"];
@@ -109,15 +110,17 @@ const CodeforcesPage = (props) => {
   const { open, handleClickOpen, handleClose } = useDialog();
 
   const getContestDistribution = () => {
-    const divLevels = { 2: 0, 3: 0, 4: 0 };
+    const divLevels = { 2: 0, 3: 0, 4: 0, Global: 0 };
     _.forEach(ratingData, (item) => {
       const contestName = item.contestName;
       if (contestName.includes("Div. 2")) {
         divLevels[2] += 1;
       } else if (contestName.includes("Div. 3")) {
         divLevels[3] += 1;
-      } else {
+      } else if (contestName.includes("Div. 4")) {
         divLevels[4] += 1;
+      } else {
+        divLevels["Global"] += 1;
       }
     });
     return divLevels;
