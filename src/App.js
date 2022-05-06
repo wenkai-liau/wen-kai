@@ -17,6 +17,7 @@ import { Helmet } from "react-helmet";
 import favicon from "./favicon.ico";
 import error_page from "./images/doge_error.png";
 import CP from "./components/Cp/cp";
+import Contact from "./components/contact";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -127,7 +128,7 @@ const App = () => {
               <Route exact path={"/"} element={<About />} />
               <Route exact path={"/cp"} element={<CP />} />
               <Route exact path={"/books"} element={<Books />} />
-              <Route exact path={"/contact"} element={wip()} />
+              <Route exact path={"/contact"} element={<Contact />} />
 
               <Route path="/404" element={errorPage()} />
               <Route path="*" element={<Navigate replace to="/404" />} />
