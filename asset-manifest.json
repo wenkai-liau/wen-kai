@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wenkai-liau/static/css/main.28b6b973.css",
-    "main.js": "/wenkai-liau/static/js/main.0199d4e4.js",
+    "main.js": "/wenkai-liau/static/js/main.9e6c66b9.js",
     "static/js/787.43104ac7.chunk.js": "/wenkai-liau/static/js/787.43104ac7.chunk.js",
     "static/media/night_panorama.jpg": "/wenkai-liau/static/media/night_panorama.4cd22419c1481856c662.jpg",
     "static/media/books.jpg": "/wenkai-liau/static/media/books.58e2c280f4345e1dbd8b.jpg",
@@ -33,11 +33,11 @@
     "static/media/git_logo.svg": "/wenkai-liau/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wenkai-liau/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.28b6b973.css.map": "/wenkai-liau/static/css/main.28b6b973.css.map",
-    "main.0199d4e4.js.map": "/wenkai-liau/static/js/main.0199d4e4.js.map",
+    "main.9e6c66b9.js.map": "/wenkai-liau/static/js/main.9e6c66b9.js.map",
     "787.43104ac7.chunk.js.map": "/wenkai-liau/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.28b6b973.css",
-    "static/js/main.0199d4e4.js"
+    "static/js/main.9e6c66b9.js"
   ]
 }
