@@ -32,12 +32,12 @@ import { ReactComponent as GradleLogo } from "../svg/gradle_logo.svg";
 import { ReactComponent as HtmlLogo } from "../svg/html.svg";
 import { ReactComponent as CssLogo } from "../svg/css.svg";
 import { ReactComponent as MaterialLogo } from "../svg/material.svg";
-import image from "../images/night_panorama.jpg";
 import memeOne from "./doge.png";
 import memeTwo from "./trollface.png";
 import memeThree from "./feelsguy.png";
 import memeFour from "./monkas.png";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import AutoSlider from "../common/autoSlider";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -349,19 +349,10 @@ const About = (props) => {
     );
   };
 
-  const { height, width } = useWindowDimensions();
-  const smallScreen = width < 720;
-
   return (
     <div container className={classes.container}>
       <Grid item className={classes.imgContainer}>
-        <img
-          item
-          src={image}
-          width={smallScreen ? width : 1400}
-          height={smallScreen ? 150 : 350}
-          style={{ alignSelf: "center" }}
-        />
+        {AutoSlider(useWindowDimensions())}
       </Grid>
 
       <Grid item className={classes.contentContainer}>
