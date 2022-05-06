@@ -8,7 +8,13 @@ import {
 } from "@material-ui/core";
 import HeaderBar from "./components/header";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  HashRouter,
+} from "react-router-dom";
 import About from "./components/about";
 import FooterBar from "./components/footerBar";
 import Books from "./components/books";
@@ -112,7 +118,8 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter basename="/wenkai-liau">
+    // <BrowserRouter basename="/wenkai-liau"></BrowserRouter>
+    <HashRouter basename="/">
       <div className={classes.root}>
         <Helmet>
           <title>Wen Kai Site</title>
@@ -138,7 +145,7 @@ const App = () => {
           <FooterBar />
         </ThemeProvider>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
