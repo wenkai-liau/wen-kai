@@ -50,6 +50,13 @@ const divisionColors = {
 const barChartColors = ["#a8e6cf", "#dcedc1", "#ffd3b6", "#ffaaa5", "#ff8b94"];
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    height: "100%",
+    margin: "2% 1%",
+  },
   navButtonStyle: {
     justifyContent: "flex-end",
     [theme.breakpoints.down("xs")]: {
@@ -221,11 +228,7 @@ const CodeforcesPage = (props) => {
   };
 
   return (
-    <Grid
-      container
-      item
-      style={{ display: "flex", height: "100%", flexDirection: "column" }}
-    >
+    <Grid container item className={classes.container}>
       <Grid item container className={classes.navButtonStyle}>
         <Button
           color="primary"
