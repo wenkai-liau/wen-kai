@@ -83,11 +83,7 @@ const Contact = (props) => {
     ),
     gridIcon(
       <LinkedIn style={{ height: 36, width: 36, color: "#0A66C2" }} />,
-      () =>
-        onClickIcon(
-          "Open Linkedin?",
-          "https://www.linkedin.com/in/liau-kai-4b70bb95/"
-        )
+      () => onClickIcon("Open Linkedin?", "www.linkedin.com/in/wen-kai")
     ),
     gridIcon(
       <img
