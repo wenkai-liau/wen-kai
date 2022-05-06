@@ -118,7 +118,7 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter basename="/wenkai">
+    <BrowserRouter basename="/wen-kai">
       <div className={classes.root}>
         <Helmet>
           <title>Wen Kai Site</title>
