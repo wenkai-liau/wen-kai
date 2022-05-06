@@ -2,12 +2,8 @@ import {
   Button,
   Card,
   CardContent,
-  CardMedia,
   Grid,
   makeStyles,
-  Tab,
-  Tabs,
-  Tooltip,
   Typography,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
@@ -18,6 +14,9 @@ import { Doughnut } from "react-chartjs-2";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { SendOutlined } from "@material-ui/icons";
 import { openInNewTab } from "../../common/common";
+import DialogCustom from "../../common/dialogCustom";
+import leetcode from "../../images/leetcode.png";
+import useDialog from "../../hooks/useDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -32,11 +31,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       padding: "0% 10%",
       margin: "10px 0%",
-      // height: 250,
     },
     [theme.breakpoints.up("sm")]: {
       padding: "0% 5%",
-      // height: 300,
     },
   },
   itemContainer: {
@@ -59,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
 const LeetcodePage = (props) => {
   const classes = useStyles();
   const data = _.defaultTo(useLeetcode(), {});
+
+  const { open, handleClickOpen, handleClose } = useDialog();
 
   const renderDoughnut = (
     title,
@@ -133,6 +132,21 @@ const LeetcodePage = (props) => {
     return () => openInNewTab(url);
   };
 
+  const dialogTitle = (text) => {
+    return (
+      <Grid container justifyContent="space-between">
+        <Grid item>{text}</Grid>
+        <img
+          item
+          src={leetcode}
+          width={24}
+          height={24}
+          style={{ alignSelf: "center" }}
+        />
+      </Grid>
+    );
+  };
+
   return (
     <Grid item container className={classes.container}>
       <Grid item container className={classes.navButtonStyle}>
@@ -140,10 +154,17 @@ const LeetcodePage = (props) => {
           color="primary"
           variant="contained"
           endIcon={<SendOutlined />}
-          onClick={onClickURL("https://codeforces.com/profile/wKai000")}
+          onClick={handleClickOpen}
         >
           To Leetcode
         </Button>
+        <DialogCustom
+          title={dialogTitle("Open new tab?")}
+          content={"https://leetcode.com/Lwenkai/"}
+          open={open}
+          handleSubmit={onClickURL("https://leetcode.com/Lwenkai/")}
+          handleClose={handleClose}
+        />
       </Grid>
 
       <Grid

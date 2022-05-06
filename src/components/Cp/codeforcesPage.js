@@ -17,6 +17,9 @@ import { Doughnut, Bar } from "react-chartjs-2";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { SendOutlined } from "@material-ui/icons";
 import { openInNewTab } from "../../common/common";
+import useDialog from "../../hooks/useDialog";
+import DialogCustom from "../../common/dialogCustom";
+import codeforces from "../../images/codeforces.png";
 
 ChartJS.register(
   ArcElement,
@@ -95,6 +98,8 @@ const CodeforcesPage = (props) => {
     categories,
     submissionStatus,
   } = useCodeforces();
+
+  const { open, handleClickOpen, handleClose } = useDialog();
 
   const getContestDistribution = () => {
     const divLevels = { 2: 0, 3: 0, 4: 0 };
@@ -201,6 +206,21 @@ const CodeforcesPage = (props) => {
     return () => openInNewTab(url);
   };
 
+  const dialogTitle = (text) => {
+    return (
+      <Grid container justifyContent="space-between">
+        <Grid item>{text}</Grid>
+        <img
+          item
+          src={codeforces}
+          width={24}
+          height={24}
+          style={{ alignSelf: "center" }}
+        />
+      </Grid>
+    );
+  };
+
   return (
     <Grid
       container
@@ -212,10 +232,17 @@ const CodeforcesPage = (props) => {
           color="primary"
           variant="contained"
           endIcon={<SendOutlined />}
-          onClick={onClickURL("https://codeforces.com/profile/wKai000")}
+          onClick={handleClickOpen}
         >
           Codeforces
         </Button>
+        <DialogCustom
+          title={dialogTitle("Open new tab?")}
+          content={"https://codeforces.com/profile/wKai000"}
+          open={open}
+          handleSubmit={onClickURL("https://codeforces.com/profile/wKai000")}
+          handleClose={handleClose}
+        />
       </Grid>
 
       <Grid container item className={classes.doughtnutsContainer}>

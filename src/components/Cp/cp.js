@@ -1,12 +1,5 @@
-import {
-  Grid,
-  makeStyles,
-  Tab,
-  Tabs,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
-import { AccessTime, Code } from "@material-ui/icons";
+import { Grid, makeStyles, Tab, Tabs, Typography } from "@material-ui/core";
+import { AccessTime, Code, Link } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import codeforces from "../../images/codeforces.png";
 import leetcode from "../../images/leetcode.png";
@@ -78,10 +71,9 @@ const CP = (props) => {
             />
           )}
         />
-        {/* <Tab className={classes.tabStyles} value={2} label={createText("Atcoder", <Code/>)}/> */}
         <Tab
           className={classes.tabStyles}
-          value={3}
+          value={2}
           label={createText(
             "Codeforces",
             <img
@@ -93,6 +85,11 @@ const CP = (props) => {
             />
           )}
         />
+        <Tab
+          className={classes.tabStyles}
+          value={3}
+          label={createText("Atcoder", <Link />)}
+        />
       </Tabs>
 
       <TabPanel value={tabValue} index={0}>
@@ -101,11 +98,11 @@ const CP = (props) => {
       <TabPanel value={tabValue} index={1}>
         <LeetcodePage />
       </TabPanel>
-      {/* <TabPanel value={tabValue} index={2}>
-            <AtcoderPage/>
-        </TabPanel> */}
-      <TabPanel value={tabValue} index={3}>
+      <TabPanel value={tabValue} index={2}>
         <CodeforcesPage />
+      </TabPanel>
+      <TabPanel value={tabValue} index={3}>
+        <AtcoderPage />
       </TabPanel>
     </Grid>
   );
