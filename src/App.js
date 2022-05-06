@@ -119,7 +119,8 @@ const App = () => {
 
   return (
     // <BrowserRouter basename="/wenkai-liau"></BrowserRouter>
-    <HashRouter basename="/">
+    // <HashRouter basename="/">
+    <BrowserRouter basename="/">
       <div className={classes.root}>
         <Helmet>
           <title>Wen Kai Site</title>
@@ -145,7 +146,8 @@ const App = () => {
           <FooterBar />
         </ThemeProvider>
       </div>
-    </HashRouter>
+    </BrowserRouter>
+    // </HashRouter>
   );
 };
 
