@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wenkai/static/css/main.d0e4541c.css",
-    "main.js": "/wenkai/static/js/main.04b050a9.js",
+    "main.js": "/wenkai/static/js/main.0e0118b7.js",
     "static/js/787.43104ac7.chunk.js": "/wenkai/static/js/787.43104ac7.chunk.js",
     "static/media/craterLake.jpg": "/wenkai/static/media/craterLake.cc445d358d9288c3cad3.jpg",
     "static/media/marina.jpg": "/wenkai/static/media/marina.bd21550a25a63776dcb6.jpg",
@@ -36,11 +36,11 @@
     "static/media/git_logo.svg": "/wenkai/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wenkai/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.d0e4541c.css.map": "/wenkai/static/css/main.d0e4541c.css.map",
-    "main.04b050a9.js.map": "/wenkai/static/js/main.04b050a9.js.map",
+    "main.0e0118b7.js.map": "/wenkai/static/js/main.0e0118b7.js.map",
     "787.43104ac7.chunk.js.map": "/wenkai/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d0e4541c.css",
-    "static/js/main.04b050a9.js"
+    "static/js/main.0e0118b7.js"
   ]
 }
