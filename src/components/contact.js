@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createTheme, Grid, makeStyles, Typography } from "@material-ui/core";
-import image from "../images/night_panorama.jpg";
+import image from "../images/marina.jpg";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { GitHub, LinkedIn } from "@material-ui/icons";
 import leetcode from "../images/leetcode.png";
@@ -120,7 +120,7 @@ const Contact = (props) => {
         <img
           item
           src={image}
-          width={smallScreen ? width : 1400}
+          width={smallScreen ? width * 0.9 : width * 0.7}
           height={smallScreen ? 150 : 350}
           style={{ alignSelf: "center" }}
         />
@@ -133,10 +133,6 @@ const Contact = (props) => {
           style={{ textAlign: "center", marginBottom: 15 }}
         >
           Contact Me
-        </Typography>
-
-        <Typography item variant="h4" style={{ textAlign: "center" }}>
-          I can be contacted through the following
         </Typography>
 
         <Grid

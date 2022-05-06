@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import book_cover_page from "../images/books.jpg";
+import image from "../images/craterLake.jpg";
 import BookCard from "./bookCard";
 import booksJson from "../books/books.json";
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -96,6 +96,7 @@ const Books = (props) => {
   const [filter, setFilter] = useState(initFilterState);
 
   const { height, width } = useWindowDimensions();
+  const isPhoneScreen = width < 700;
 
   const read = booksJson.read;
   const reading = booksJson.reading;
@@ -215,9 +216,9 @@ const Books = (props) => {
     <div className={classes.container}>
       <Grid item className={classes.imgContainer}>
         <img
-          src={book_cover_page}
+          src={image}
           width={width * 0.9}
-          height={height * 0.4}
+          height={isPhoneScreen ? 150 : height * 0.4}
           style={{ alignSelf: "center" }}
         />
       </Grid>
