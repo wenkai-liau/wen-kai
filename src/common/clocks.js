@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import _ from "lodash";
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const useStyles = makeStyles((theme) => ({
   App: {
@@ -11,15 +11,14 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "sans-serif",
     textAlign: "center",
   },
-//   time: {
-//     fontSize: "32px",
-//   },
+  //   time: {
+  //     fontSize: "32px",
+  //   },
 }));
 
 const minuteSeconds = 60;
 const hourSeconds = 3600;
 const daySeconds = 86400;
-
 
 const getTimeSeconds = (time) => (minuteSeconds - time) | 0;
 const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
@@ -30,9 +29,8 @@ const Clocks = (props) => {
   const classes = useStyles();
 
   const { startDate, endDate } = props;
-// console.log('endDate', endDate)
-  const {height, width} = useWindowDimensions()
-  const isPhoneScreen = width < 700
+  const { height, width } = useWindowDimensions();
+  const isPhoneScreen = width < 700;
   const timerProps = {
     isPlaying: true,
     size: isPhoneScreen ? 80 : 120,
@@ -46,7 +44,7 @@ const Clocks = (props) => {
   const renderTime = (dimension, time) => {
     return (
       <div className="time-wrapper">
-        <div style={{fontSize: isPhoneScreen ? 20 : 42}}>{time}</div>
+        <div style={{ fontSize: isPhoneScreen ? 20 : 42 }}>{time}</div>
         <div>{dimension}</div>
       </div>
     );

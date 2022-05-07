@@ -1,23 +1,40 @@
 import axios from "axios";
 import _ from "lodash";
 import { useState, useEffect } from "react";
+import useDidMountEffect from "./useDidMountEffect";
 
 const useCodeforces = () => {
   const [ratingData, setRatingData] = useState(undefined);
   const [submissionsData, setSubmissionsData] = useState(undefined);
-
-  const [problemsSolved, setProblemsSolved] = useState(0);
-  const [standings, setStandings] = useState(0);
+  const [allContest, setAllContest] = useState([]);
 
   const [contestIds, setContestIds] = useState([]);
-  // const [contestDetailedData, setContestDetailedData] = useState(undefined)
 
   useEffect(() => {
     axios
+      .get(`https://codeforces.com/api/contest.list?gym=false`)
+      .then((res) => {
+        const data = res.data.result;
+        const nameDate = {};
+        _.forEach(data, (x) => {
+          nameDate[x.name] = { ...x };
+        });
+        setAllContest(nameDate);
+      });
+  }, []);
+
+  useDidMountEffect(() => {
+    axios
       .get(`https://codeforces.com/api/user.rating?handle=wKai000`)
       .then((res) => {
-        console.log(res);
-        setRatingData(res.data.result);
+        setRatingData(
+          _.map(res.data.result, (rs) => {
+            return {
+              ...rs,
+              startDate: allContest[rs.contestName].startTimeSeconds,
+            };
+          })
+        );
         setContestIds(res.data.result.map((contest) => contest.contestId));
       });
 
@@ -26,7 +43,7 @@ const useCodeforces = () => {
       .then((res) => {
         setSubmissionsData(res.data.result);
       });
-  }, []);
+  }, [allContest]);
 
   const getProblemsSolved = () => {
     // number of questions solved per contest
@@ -65,7 +82,7 @@ const useCodeforces = () => {
   };
 
   const { idSolved, categories, submissionStatus } = getProblemsSolved();
-  // console.log(submissionStatus)
+
   return {
     ratingData,
     submissionsData,

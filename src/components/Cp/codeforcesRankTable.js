@@ -29,6 +29,12 @@ const headCells = [
     label: "Contest Name",
   },
   {
+    id: "startDate",
+    numeric: true,
+    disablePadding: false,
+    label: "Date",
+  },
+  {
     id: "rank",
     numeric: true,
     disablePadding: false,
@@ -140,7 +146,7 @@ const CodeforcesRankTable = ({ ratingData, idSolved }) => {
   const classes = useStyles();
   const rows = ratingData ? ratingData : [];
   const [order, setOrder] = React.useState("desc");
-  const [orderBy, setOrderBy] = React.useState("contestId");
+  const [orderBy, setOrderBy] = React.useState("startDate");
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -164,7 +170,10 @@ const CodeforcesRankTable = ({ ratingData, idSolved }) => {
     );
   };
 
-  const { height, width } = useWindowDimensions();
+  const convertDate = (ms) => {
+    const d = new Date(ms * 1000);
+    return d.toDateString();
+  };
 
   return (
     <Grid container className={classes.root}>
@@ -188,6 +197,9 @@ const CodeforcesRankTable = ({ ratingData, idSolved }) => {
                     {row.contestId}
                   </TableCell>
                   <TableCell align="left">{row.contestName}</TableCell>
+                  <TableCell align="left">
+                    {convertDate(row.startDate)}
+                  </TableCell>
                   <TableCell align="left">{row.rank}</TableCell>
                   <TableCell align="left">{idSolved[row.contestId]}</TableCell>
                   <TableCell align="left">{renderRatingChange(row)}</TableCell>
