@@ -22,35 +22,35 @@ const AutoSlider = ({ height, width }) => {
       <div className="row">
         <img
           src={imageOne}
-          width={smallScreen ? width : 1200}
+          width={smallScreen ? width : 1100}
           height={smallScreen ? 150 : 350}
         />
       </div>
       <div className="row">
         <img
           src={imageTwo}
-          width={smallScreen ? width : 1200}
+          width={smallScreen ? width : 1100}
           height={smallScreen ? 150 : 350}
         />
       </div>
       <div className="row">
         <img
           src={imageThree}
-          width={smallScreen ? width : 1200}
+          width={smallScreen ? width : 1100}
           height={smallScreen ? 150 : 350}
         />
       </div>
       <div className="row">
         <img
           src={imageFour}
-          width={smallScreen ? width : 1200}
+          width={smallScreen ? width : 1100}
           height={smallScreen ? 150 : 350}
         />
       </div>
       <div className="row">
         <img
           src={imageFive}
-          width={smallScreen ? width : 1200}
+          width={smallScreen ? width : 1100}
           height={smallScreen ? 150 : 350}
         />
       </div>
