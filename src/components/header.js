@@ -32,7 +32,7 @@ let styles = {
     top: "25px",
   },
   bmBurgerBars: {
-    background: "#373a47",
+    background: "#2155CD",
   },
   bmBurgerBarsHover: {
     background: "#a90000",
