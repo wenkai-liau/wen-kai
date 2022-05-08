@@ -31,7 +31,7 @@ let styles = {
     width: "120px",
     height: "70px",
     right: "10px",
-    top: "25px",
+    top: "10px",
   },
   bmBurgerBars: {
     background: "#2155CD",

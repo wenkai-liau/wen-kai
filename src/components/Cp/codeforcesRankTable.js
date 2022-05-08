@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
   paperContainer: {
     marginTop: 10,
     [theme.breakpoints.down("xs")]: {
-      width: "80%",
+      width: 350,
     },
     [theme.breakpoints.up("sm")]: {
       width: "80%",
