@@ -1,4 +1,5 @@
-import "react-awesome-slider/dist/styles.css";
+// import "react-awesome-slider/dist/styles.css";
+import "./slider-styles.css";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 
