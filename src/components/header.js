@@ -19,6 +19,8 @@ import { slide as Menu } from "react-burger-menu";
 import {
   ChromeReaderMode,
   ContactMail,
+  MenuOpen,
+  MenuOutlined,
   Person,
   Timeline,
 } from "@material-ui/icons";
@@ -26,9 +28,9 @@ import {
 let styles = {
   bmBurgerButton: {
     position: "fixed",
-    width: "45px",
-    height: "30px",
-    right: "25px",
+    width: "120px",
+    height: "70px",
+    right: "10px",
     top: "25px",
   },
   bmBurgerBars: {
@@ -107,6 +109,28 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "white",
     },
+  },
+  "@keyframes color": {
+    "0%": {
+      color: "#A5DEF2",
+    },
+    "25%": {
+      color: "#5BAEB7",
+    },
+    "50%": {
+      color: "#1E80C1",
+    },
+    "75%": {
+      color: "#414C6B",
+    },
+    "100%": {
+      color: "black",
+    },
+  },
+  customBurgerIcon: {
+    animation: "$color 4s infinite",
+    // width: 200,
+    // height: 200,
   },
 }));
 
@@ -241,10 +265,15 @@ const HeaderBar = (props) => {
     setMenuOpen(false);
   };
 
+  const customBurgerIcon = (
+    <MenuOutlined className={classes.customBurgerIcon} />
+  );
+
   // https://www.npmjs.com/package/react-burger-menu
   return (
     <Grid container align="center" className={classes.container}>
       <Menu
+        customBurgerIcon={customBurgerIcon}
         isOpen={menuOpen}
         onStateChange={() => handleStateChange()}
         right
