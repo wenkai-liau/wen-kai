@@ -115,16 +115,16 @@ const useStyles = makeStyles((theme) => ({
       color: "#A5DEF2",
     },
     "25%": {
-      color: "#5BAEB7",
+      color: "#00E8FF",
     },
     "50%": {
-      color: "#1E80C1",
+      color: "#5BAEB7",
     },
     "75%": {
-      color: "#414C6B",
+      color: "#1E80C1",
     },
     "100%": {
-      color: "black",
+      color: "#414C6B",
     },
   },
   customBurgerIcon: {
