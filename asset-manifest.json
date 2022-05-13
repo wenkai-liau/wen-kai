@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wen-kai/static/css/main.214d43b4.css",
-    "main.js": "/wen-kai/static/js/main.983c576a.js",
+    "main.js": "/wen-kai/static/js/main.85b614e9.js",
     "static/js/787.43104ac7.chunk.js": "/wen-kai/static/js/787.43104ac7.chunk.js",
     "static/media/craterLake.jpg": "/wen-kai/static/media/craterLake.cc445d358d9288c3cad3.jpg",
     "static/media/marina.jpg": "/wen-kai/static/media/marina.bd21550a25a63776dcb6.jpg",
@@ -36,11 +36,11 @@
     "static/media/git_logo.svg": "/wen-kai/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wen-kai/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.214d43b4.css.map": "/wen-kai/static/css/main.214d43b4.css.map",
-    "main.983c576a.js.map": "/wen-kai/static/js/main.983c576a.js.map",
+    "main.85b614e9.js.map": "/wen-kai/static/js/main.85b614e9.js.map",
     "787.43104ac7.chunk.js.map": "/wen-kai/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.214d43b4.css",
-    "static/js/main.983c576a.js"
+    "static/js/main.85b614e9.js"
   ]
 }
