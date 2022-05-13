@@ -232,9 +232,9 @@ const UpcomingEventPage = (props) => {
                     variant="h5"
                     style={{ color: getPlatformColor(event.type) }}
                   >
-                    {`${event.name} [ ${event.dateObj.toLocaleTimeString(
+                    {`${event.name} [${event.dateObj.toLocaleTimeString(
                       "en-US"
-                    )} ]`}
+                    )}]`}
                   </Typography>
                 );
               })}
