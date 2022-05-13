@@ -111,7 +111,11 @@ const UpcomingEventPage = (props) => {
         selDate.getDate() === data.dateObj.getDate()
       ) {
         count += 1;
-        events.push({ name: data.name, type: data.type });
+        events.push({
+          name: data.name,
+          type: data.type,
+          dateObj: data.dateObj,
+        });
       }
     }
     return { count, events };
@@ -228,7 +232,9 @@ const UpcomingEventPage = (props) => {
                     variant="h5"
                     style={{ color: getPlatformColor(event.type) }}
                   >
-                    {`${event.name}`}
+                    {`${event.name} [ ${event.dateObj.toLocaleTimeString(
+                      "en-US"
+                    )} ]`}
                   </Typography>
                 );
               })}
