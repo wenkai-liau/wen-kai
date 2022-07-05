@@ -1,6 +1,24 @@
 {
   "read": [
     {
+      "title": "Designing Data-Intensive Applications",
+      "author": "Kleppmann, Martin",
+      "rating": 4,
+      "difficulty": 4,
+      "comments": "In depth",
+      "category": "Technical",
+      "status": "read"
+    },
+    {
+      "title": "System Design Interview - An Insider's Guide",
+      "author": "Alex Xu",
+      "rating": 5,
+      "difficulty": 1,
+      "comments": "Light read",
+      "category": "Technical",
+      "status": "read"
+    },
+    {
       "title": "A Promised Land",
       "author": "Barrack Obama",
       "rating": 5,
@@ -202,15 +220,6 @@
     {
       "title": "Clean Architecture: A craftman's guide to software structure and design",
       "author": "Robert C. Martin",
-      "rating": 0,
-      "difficulty": 0,
-      "comments": "",
-      "category": "Technical",
-      "status": "toRead"
-    },
-    {
-      "title": "System Design Interview - An Insider's Guide",
-      "author": "Alex Xu",
       "rating": 0,
       "difficulty": 0,
       "comments": "",
