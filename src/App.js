@@ -28,7 +28,6 @@ import Contact from "./components/contact";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
-    width: "99vw",
   },
   contentContainer: {
     minHeight: "87%",

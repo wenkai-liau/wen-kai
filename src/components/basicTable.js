@@ -218,7 +218,7 @@ const BasicTable = (props) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginTop: 200,
+        marginTop: 100,
       }}
     >
       <Typography variant="h4">Programming Languages</Typography>

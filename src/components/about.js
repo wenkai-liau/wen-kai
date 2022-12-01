@@ -11,10 +11,11 @@ import {
   Computer,
   Image,
   LocalCafe,
+  Movie,
   Pool,
   Timeline,
 } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import BasicTable from "./basicTable";
 import { ReactComponent as ReactLogo } from "../svg/react_logo.svg";
 import { ReactComponent as SpringLogo } from "../svg/spring_logo.svg";
@@ -38,6 +39,7 @@ import memeThree from "./feelsguy.png";
 import memeFour from "./monkas.png";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import AutoSlider from "../common/autoSlider";
+import SakanaWidget from "sakana-widget";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -87,7 +89,51 @@ const useStyles = makeStyles((theme) => ({
 
 const About = (props) => {
   const classes = useStyles();
+  const [hideAnimeWidget, setHideAnimeWidget] = useState(true);
   //   const {tabValue, handleTabChange} = props
+
+  const initTakinaWidget = () => {
+    const takina = SakanaWidget.getCharacter("takina");
+    takina.initialState = {
+      ...takina.initialState,
+      i: 0.001,
+      d: 1,
+    };
+    SakanaWidget.registerCharacter("takina-slow", takina);
+    new SakanaWidget({
+      character: "takina-slow",
+      size: 200,
+      // autoFit: true,
+      controls: false,
+      stroke: {
+        color: "transparent",
+      },
+    }).mount("#takina-widget");
+  };
+
+  const initChisatoWidget = () => {
+    const chisato = SakanaWidget.getCharacter("chisato");
+    chisato.initialState = {
+      ...chisato.initialState,
+      i: 0.001,
+      d: 1,
+    };
+    SakanaWidget.registerCharacter("chisato-slow", chisato);
+    new SakanaWidget({
+      character: "chisato-slow",
+      size: 200,
+      // autoFit: true,
+      controls: false,
+      stroke: {
+        color: "transparent",
+      },
+    }).mount("#chisato-widget");
+  };
+
+  useEffect(() => {
+    initTakinaWidget();
+    initChisatoWidget();
+  }, []);
 
   const createText = (text, icon) => {
     return (
@@ -329,13 +375,18 @@ const About = (props) => {
               <ListItem>
                 {createText("Swimming", <Pool style={{ color: "blue" }} />)}
               </ListItem>
+              <ListItem>{createText("Memes", renderMeme())}</ListItem>
               <ListItem>
                 {createText(
-                  "Drinking Tea",
-                  <LocalCafe style={{ color: "#923c01" }} />
+                  "Anime",
+                  <Movie
+                    style={{ color: "black" }}
+                    onClick={() =>
+                      setHideAnimeWidget((prevState) => !prevState)
+                    }
+                  />
                 )}
               </ListItem>
-              <ListItem>{createText("Memes", renderMeme())}</ListItem>
             </List>
           </Grid>
 
@@ -344,7 +395,26 @@ const About = (props) => {
             <br />I will also be using the site to track my progress and
             learning journey.
           </Typography>
+          {renderAnimeWidget()}
         </Grid>
+      </Grid>
+    );
+  };
+
+  const renderAnimeWidget = () => {
+    return (
+      <Grid
+        container
+        style={{
+          marginTop: 30,
+          paddingTop: 10,
+          justifyContent: "center",
+          alignItems: "center",
+          display: hideAnimeWidget && "none",
+        }}
+      >
+        <Grid item id="takina-widget" />
+        <Grid item id="chisato-widget" />
       </Grid>
     );
   };
