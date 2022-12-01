@@ -1,13 +1,19 @@
 {
   "files": {
     "main.css": "/wen-kai/static/css/main.214d43b4.css",
-    "main.js": "/wen-kai/static/js/main.bde6f157.js",
+    "main.js": "/wen-kai/static/js/main.44e78e0b.js",
     "static/js/787.43104ac7.chunk.js": "/wen-kai/static/js/787.43104ac7.chunk.js",
     "static/media/craterLake.jpg": "/wen-kai/static/media/craterLake.cc445d358d9288c3cad3.jpg",
     "static/media/marina.jpg": "/wen-kai/static/media/marina.bd21550a25a63776dcb6.jpg",
-    "static/media/moraineLake.jpg": "/wen-kai/static/media/moraineLake.931b86d0a89f9f7d567a.jpg",
-    "static/media/banff.jpg": "/wen-kai/static/media/banff.1d4c4329a4a841b43d65.jpg",
-    "static/media/night_panorama.jpg": "/wen-kai/static/media/night_panorama.4cd22419c1481856c662.jpg",
+    "static/media/shibuyaSky.jpg": "/wen-kai/static/media/shibuyaSky.b5478387d0219c3d58af.jpg",
+    "static/media/chureitoPagoda.jpg": "/wen-kai/static/media/chureitoPagoda.a7450ace9f46ec006775.jpg",
+    "static/media/tokyoStation.jpg": "/wen-kai/static/media/tokyoStation.48f975ee5c45816ddfd6.jpg",
+    "static/media/sensojiTemple.jpg": "/wen-kai/static/media/sensojiTemple.84715dbf33cfc85b9cd6.jpg",
+    "static/media/kawaguchiko2.jpg": "/wen-kai/static/media/kawaguchiko2.b8d65bd874118e027749.jpg",
+    "static/media/chuzenjiLake.jpg": "/wen-kai/static/media/chuzenjiLake.dec9ca4058c717002757.jpg",
+    "static/media/kawaguchiko.jpg": "/wen-kai/static/media/kawaguchiko.b0fe2f9165891f61a6ed.jpg",
+    "static/media/kawaguchiko4.jpg": "/wen-kai/static/media/kawaguchiko4.2f52f6c2d3d02077b5bd.jpg",
+    "static/media/kawaguchiko3.jpg": "/wen-kai/static/media/kawaguchiko3.6fa68214b42a316a4277.jpg",
     "static/media/doge_error.png": "/wen-kai/static/media/doge_error.ff1bea58f0d0957cb31c.png",
     "static/media/pikachu_meme.png": "/wen-kai/static/media/pikachu_meme.1957dbaf9809dad51d6a.png",
     "static/media/flask_logo.svg": "/wen-kai/static/media/flask_logo.b895607b707b858500de2a5db7a25ebd.svg",
@@ -36,11 +42,11 @@
     "static/media/git_logo.svg": "/wen-kai/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wen-kai/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.214d43b4.css.map": "/wen-kai/static/css/main.214d43b4.css.map",
-    "main.bde6f157.js.map": "/wen-kai/static/js/main.bde6f157.js.map",
+    "main.44e78e0b.js.map": "/wen-kai/static/js/main.44e78e0b.js.map",
     "787.43104ac7.chunk.js.map": "/wen-kai/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.214d43b4.css",
-    "static/js/main.bde6f157.js"
+    "static/js/main.44e78e0b.js"
   ]
 }
