@@ -303,7 +303,7 @@ const About = (props) => {
           style={{ flexDirection: "column" }}
         >
           <Typography item variant="h5" style={{ textAlign: "center" }}>
-            Hello! I am Wen Kai, a Software Engineer working in Defence Tech
+            Hello! I am Wen Kai, a Software Engineer working in Tech Industry
           </Typography>
 
           <Grid item container justify="center">

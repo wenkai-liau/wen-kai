@@ -19,6 +19,9 @@ import { ReactComponent as TSLogo } from "../svg/typescript.svg";
 import { ReactComponent as CLogo } from "../svg/c.svg";
 import { ReactComponent as MatlabLogo } from "../svg/matlab.svg";
 import { ReactComponent as PerlLogo } from "../svg/perl.svg";
+import { ReactComponent as GoLogo } from "../svg/golang.svg";
+import { ReactComponent as CPlusLogo } from "../svg/cplus.svg";
+
 import * as React from "react";
 
 function createData(language, experience, preference) {
@@ -59,7 +62,7 @@ const rows = [
       ></MatlabLogo>
       Matlab
     </Grid>,
-    2,
+    1,
     1
   ),
   createData(
@@ -84,6 +87,22 @@ const rows = [
     </Grid>,
     0,
     0
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <GoLogo style={{ marginRight: 2, height: 30, width: 30 }}></GoLogo>
+      Go
+    </Grid>,
+    2,
+    2
+  ),
+  createData(
+    <Grid container alignItems="center">
+      <CPlusLogo style={{ marginRight: 2, height: 30, width: 30 }}></CPlusLogo>
+      C++
+    </Grid>,
+    0,
+    2
   ),
 ];
 

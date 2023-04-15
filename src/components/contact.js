@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { createTheme, Grid, makeStyles, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
 import image from "../images/marina.jpg";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import { GitHub, LinkedIn } from "@material-ui/icons";
+import { GitHub, LinkedIn, MenuBook, TrendingUp } from "@material-ui/icons";
 import leetcode from "../images/leetcode.png";
 import codeforces from "../images/codeforces.png";
 import { openInNewTab } from "../common/common";
 import useDialog from "../hooks/useDialog";
 import DialogCustom from "../common/dialogCustom";
+import atcoder from "../images/atcoder.svg";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -107,7 +108,24 @@ const Contact = (props) => {
           "https://codeforces.com/profile/wKai000"
         )
     ),
-    ,
+    gridIcon(
+      <img
+        src={atcoder}
+        width={36}
+        height={36}
+        style={{ alignSelf: "center" }}
+      />,
+      () => onClickIcon("Open Atcoder?", "https://atcoder.jp/users/kaicoder0")
+    ),
+    gridIcon(<MenuBook style={{ height: 36, width: 36 }} />, () =>
+      onClickIcon(
+        "Open Storygraph?",
+        "https://app.thestorygraph.com/profile/lwenkai"
+      )
+    ),
+    gridIcon(<TrendingUp style={{ height: 36, width: 36 }} />, () =>
+      onClickIcon("Open CLIST?", "https://clist.by/coder/lwkclist/")
+    ),
   ];
 
   return (
@@ -128,7 +146,7 @@ const Contact = (props) => {
           variant="h3"
           style={{ textAlign: "center", marginBottom: 15 }}
         >
-          Contact Me
+          Related links
         </Typography>
 
         <Grid

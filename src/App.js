@@ -8,13 +8,7 @@ import {
 } from "@material-ui/core";
 import HeaderBar from "./components/header";
 import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  HashRouter,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import About from "./components/about";
 import FooterBar from "./components/footerBar";
 import Books from "./components/books";
@@ -28,7 +22,7 @@ import Contact from "./components/contact";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
-    width: "99vw",
+    // width: "99vw",
   },
   contentContainer: {
     minHeight: "87%",
