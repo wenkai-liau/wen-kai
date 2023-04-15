@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wen-kai/static/css/main.214d43b4.css",
-    "main.js": "/wen-kai/static/js/main.44e78e0b.js",
+    "main.js": "/wen-kai/static/js/main.467f80b6.js",
     "static/js/787.43104ac7.chunk.js": "/wen-kai/static/js/787.43104ac7.chunk.js",
     "static/media/craterLake.jpg": "/wen-kai/static/media/craterLake.cc445d358d9288c3cad3.jpg",
     "static/media/marina.jpg": "/wen-kai/static/media/marina.bd21550a25a63776dcb6.jpg",
@@ -15,9 +15,11 @@
     "static/media/kawaguchiko4.jpg": "/wen-kai/static/media/kawaguchiko4.2f52f6c2d3d02077b5bd.jpg",
     "static/media/kawaguchiko3.jpg": "/wen-kai/static/media/kawaguchiko3.6fa68214b42a316a4277.jpg",
     "static/media/doge_error.png": "/wen-kai/static/media/doge_error.ff1bea58f0d0957cb31c.png",
+    "static/media/atcoder.svg": "/wen-kai/static/media/atcoder.ce340f4a82685213733d106cb53c7a8c.svg",
     "static/media/pikachu_meme.png": "/wen-kai/static/media/pikachu_meme.1957dbaf9809dad51d6a.png",
     "static/media/flask_logo.svg": "/wen-kai/static/media/flask_logo.b895607b707b858500de2a5db7a25ebd.svg",
     "static/media/perl.svg": "/wen-kai/static/media/perl.f459faf96fce87de78f26125bf9d3656.svg",
+    "static/media/golang.svg": "/wen-kai/static/media/golang.c6b5b0a2490db0c32b570cf41ead9bac.svg",
     "static/media/java.svg": "/wen-kai/static/media/java.e9c7bee6365e79706d14b0779000e395.svg",
     "static/media/mysql_logo.svg": "/wen-kai/static/media/mysql_logo.3737d1ef555157e6069bbc4a693b96dc.svg",
     "static/media/selenium_logo.svg": "/wen-kai/static/media/selenium_logo.994eeb53fbd0ff7c106f00786c1b8bdb.svg",
@@ -31,6 +33,7 @@
     "static/media/react_logo.svg": "/wen-kai/static/media/react_logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "static/media/neo4j_logo.svg": "/wen-kai/static/media/neo4j_logo.7986fccc5257cf31a5315d9ad297bcc0.svg",
     "static/media/css.svg": "/wen-kai/static/media/css.97715c1c82ff638fe06cd7d8c9b746ac.svg",
+    "static/media/cplus.svg": "/wen-kai/static/media/cplus.a776a608546a79750b150829bc9b099e.svg",
     "static/media/matlab.svg": "/wen-kai/static/media/matlab.8e6053506a862c53a0cdd611c194d7f0.svg",
     "static/media/elastic_logo.svg": "/wen-kai/static/media/elastic_logo.765bccc5c1d3cec4fad1de45b2cd740c.svg",
     "static/media/typescript.svg": "/wen-kai/static/media/typescript.0862127c02a57f6d39dabe211ae436ab.svg",
@@ -42,11 +45,11 @@
     "static/media/git_logo.svg": "/wen-kai/static/media/git_logo.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/javascript.svg": "/wen-kai/static/media/javascript.84ac97b2d839ad0e78473327947874a9.svg",
     "main.214d43b4.css.map": "/wen-kai/static/css/main.214d43b4.css.map",
-    "main.44e78e0b.js.map": "/wen-kai/static/js/main.44e78e0b.js.map",
+    "main.467f80b6.js.map": "/wen-kai/static/js/main.467f80b6.js.map",
     "787.43104ac7.chunk.js.map": "/wen-kai/static/js/787.43104ac7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.214d43b4.css",
-    "static/js/main.44e78e0b.js"
+    "static/js/main.467f80b6.js"
   ]
 }
